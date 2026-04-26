@@ -1,0 +1,191 @@
+[
+  {
+    "objectID": "projects/three-point-effect.html",
+    "href": "projects/three-point-effect.html",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "",
+    "text": "This project explores how NBA three-point shooting relates to team success across historical seasons. The analysis focuses on whether teams that attempt more threes, make more threes, or shoot a higher three-point percentage tend to win more games.\nRather than only looking at modern basketball, the project uses year-over-year team-level data to compare teams across different NBA eras. This makes it possible to see both the long-term growth of the three-point shot and the changing relationship between perimeter shooting and winning.\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#project-summary",
+    "href": "projects/three-point-effect.html#project-summary",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "",
+    "text": "This project explores how NBA three-point shooting relates to team success across historical seasons. The analysis focuses on whether teams that attempt more threes, make more threes, or shoot a higher three-point percentage tend to win more games.\nRather than only looking at modern basketball, the project uses year-over-year team-level data to compare teams across different NBA eras. This makes it possible to see both the long-term growth of the three-point shot and the changing relationship between perimeter shooting and winning.\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#research-question",
+    "href": "projects/three-point-effect.html#research-question",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Research Question",
+    "text": "Research Question\nHow strongly are NBA teams’ three-point shooting statistics related to winning percentage?\nMore specifically, this project evaluates three core shooting indicators:\n\nThree-point attempts per game\nThree-point makes per game\nThree-point percentage\n\nThe goal was not just to determine whether three-point shooting matters, but to understand which three-point metrics are most closely associated with team success."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#data-and-collection-process",
+    "href": "projects/three-point-effect.html#data-and-collection-process",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Data and Collection Process",
+    "text": "Data and Collection Process\nThe dataset was collected using the nba_api Python package, specifically the TeamYearByYearStats endpoint. The data includes historical team-level statistics such as wins, losses, win percentage, three-point makes, three-point attempts, and three-point percentage.\nA major data preparation step involved standardizing historical franchise names. Because NBA teams have relocated or changed names over time, older team names such as the Charlotte Bobcats, New Orleans Hornets, Seattle SuperSonics, and New Jersey Nets had to be mapped to consistent franchise names.\nThe data collection process also accounted for NBA Stats API reliability issues by using request headers, longer timeouts, retry logic, and local CSV outputs."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#methods",
+    "href": "projects/three-point-effect.html#methods",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Methods",
+    "text": "Methods\nThe analysis was completed in Python and included the following steps:\n\nCollected historical team-level NBA data using nba_api\nCleaned and standardized franchise names across team history\nCreated per-game three-point shooting features\nCompared three-point attempts, makes, and percentage against win percentage\nBuilt scatterplots with regression lines to visualize relationships\nIdentified notable outlier teams from different NBA eras\nUsed linear regression to evaluate how much three-point shooting metrics explain variation in winning"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#key-visualization-1-growth-of-three-point-shooting-over-time",
+    "href": "projects/three-point-effect.html#key-visualization-1-growth-of-three-point-shooting-over-time",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Key Visualization 1: Growth of Three-Point Shooting Over Time",
+    "text": "Key Visualization 1: Growth of Three-Point Shooting Over Time\n\n\n\n\n\nThis visualization shows how dramatically NBA three-point usage has increased over time. Three-point attempts per game and makes per game both rise sharply, especially in the modern NBA. League-wide three-point percentage improved earlier in the three-point era and then became more stable as the shot became a normal part of team offense.\nThe visualization also helps show how different NBA eras can produce very different winning profiles. The 1982 Los Angeles Lakers stand out as a high-winning team from an era when three-point usage was still extremely limited. In contrast, the 2015 Golden State Warriors represent a modern championship-level team built around elite three-point volume and efficiency."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#key-visualization-2-three-point-percentage-and-winning-percentage",
+    "href": "projects/three-point-effect.html#key-visualization-2-three-point-percentage-and-winning-percentage",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Key Visualization 2: Three-Point Percentage and Winning Percentage",
+    "text": "Key Visualization 2: Three-Point Percentage and Winning Percentage\n\n\n\n\n\nThis scatterplot shows the relationship between team three-point percentage and win percentage. The overall pattern suggests that teams shooting better from three-point range tend to win more games, but the relationship is not perfect.\nThe outliers are important because they show that three-point shooting does not explain team success by itself. The 1982 Los Angeles Lakers were highly successful despite low three-point usage, while the 2015 Golden State Warriors represent a modern example of a team whose success was closely tied to high-volume, high-efficiency three-point shooting."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#main-findings",
+    "href": "projects/three-point-effect.html#main-findings",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Main Findings",
+    "text": "Main Findings\nThe project found a positive relationship between three-point shooting and team success, especially when looking at three-point percentage. Teams that shot more efficiently from three-point range generally had higher winning percentages.\nHowever, the analysis also showed that three-point shooting is only one part of team success. Some teams won at a high level without relying heavily on the three-point shot, especially in earlier eras. Modern teams, meanwhile, are more likely to use three-point shooting as a central part of their offensive identity.\nThe main takeaway is that three-point shooting is meaningfully related to winning, but the strength and interpretation of that relationship depends heavily on era, team style, and overall roster quality."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#skills-demonstrated",
+    "href": "projects/three-point-effect.html#skills-demonstrated",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Skills Demonstrated",
+    "text": "Skills Demonstrated\n\nPython data analysis\nAPI-based data collection\nData cleaning and standardization\nSports analytics\nExploratory data analysis\nFeature engineering\nData visualization\nCorrelation and regression analysis\nInterpretation of historical trends\nGitHub project documentation"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#tools-used",
+    "href": "projects/three-point-effect.html#tools-used",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Tools Used",
+    "text": "Tools Used\nPython, pandas, matplotlib, seaborn, scikit-learn, nba_api, Jupyter Notebook, and GitHub."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#what-i-would-improve-next",
+    "href": "projects/three-point-effect.html#what-i-would-improve-next",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "What I Would Improve Next",
+    "text": "What I Would Improve Next\nFuture versions of this project could expand the analysis beyond simple three-point indicators by incorporating additional team context, such as offensive rating, defensive rating, pace, playoff performance, shot location data, or player-level roster construction.\nAnother useful extension would be to model the relationship by era instead of treating all seasons as part of one combined dataset. This would help separate the early three-point era from the modern spacing-focused NBA and provide a clearer view of how the value of three-point shooting has changed over time."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#repository",
+    "href": "projects/three-point-effect.html#repository",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Repository",
+    "text": "Repository\nThe full repository includes the notebook, collected data outputs, cached NBA API files, and the complete README with additional technical details.\nView GitHub Repository"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Download Resume PDF"
+  },
+  {
+    "objectID": "resume.html#contact",
+    "href": "resume.html#contact",
+    "title": "Resume",
+    "section": "Contact",
+    "text": "Contact\nEmail: danielfulk317@gmail.com Phone: (336)-972-7062"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Resume",
+    "section": "Education",
+    "text": "Education\n\nUniversity of North Carolina at Chapel Hill\nMaster of Applied Data Science (MADS)\nCompleted April 2026\nB.S. Economics, Minor in Data Science\nMay 2024\nGPA: 3.14\n\n\nHonors and Awards\n\nDean’s List"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "Resume",
+    "section": "Technical Skills",
+    "text": "Technical Skills\nPython, SQL, pandas, scikit-learn, TensorFlow/Keras, Optuna, Plotly, Streamlit, GitHub, Jupyter, data cleaning, feature engineering, predictive modeling, machine learning, data visualization, sports analytics, and applied data science."
+  },
+  {
+    "objectID": "resume.html#selected-projects",
+    "href": "resume.html#selected-projects",
+    "title": "Resume",
+    "section": "Selected Projects",
+    "text": "Selected Projects\n\nNext-Pitch Prediction in Baseball\nAnalyst\nChapel Hill, NC\nMay 2025\n\nBuilt a machine learning pipeline to predict the next pitch type in MLB games using Statcast and Baseball Savant pitch-level data.\nLed a data engineering process that used streaming ingestion, lagged features, pitcher/batter-specific historical tendencies, and score-context variables to create a game-aware feature set.\nImplemented and compared logistic regression, random forest, and neural network models, tuning hyperparameters with Optuna and validating performance across MLB divisions for generalizability.\nDesigned an ensemble model that integrated neural network and tree-based predictors, improving class balance and achieving 46% accuracy.\nDelivered a research-backed sports analytics framework showing how pitch sequencing, game context, and player tendencies can be modeled to support predictive insight in baseball strategy.\n\n\n\nNBA Shot Chart Data Visualization Tool\nDeveloper\nChapel Hill, NC\nAugust 2025\n\nDeveloped an interactive 3D NBA shot analytics platform in Python using Plotly and Streamlit to visualize player shooting performance spatially and contextually.\nDesigned custom 3D half-court geometry and parabolic shot trajectories to visualize shot paths in real time based on each attempt’s position relative to the hoop.\nEngineered zone-based field goal percentage models comparing player efficiency to league averages using NBA Stats API data and dynamic binning algorithms.\nApplied spatial data processing and statistical aggregation to derive performance differentials across shot zones and shooting contexts.\nOptimized data pipelines and caching logic to support real-time analytical exploration without redundant API queries."
+  },
+  {
+    "objectID": "resume.html#work-experience-and-community-involvement",
+    "href": "resume.html#work-experience-and-community-involvement",
+    "title": "Resume",
+    "section": "Work Experience and Community Involvement",
+    "text": "Work Experience and Community Involvement\n\nJavara Research\nIntern with the Finance Team\nWinston-Salem, NC\n2023 - Current\n\nIdentified potential monthly incremental revenue from changes in how patients were screened for clinical trials based on screen-fail payment terms, with the highest month totaling up to $2,986,589.25.\nConducted patient-level data cleaning in the clinical trial management system to ensure accurate aggregate metrics for each study and precise record keeping.\nContributed to building new trials in the clinical trial management system to align with sponsor-approved protocols, helping ensure that trial data and related financial information were recorded and managed correctly.\n\n\n\nNorth Stokes High School Boys Basketball\nAssistant Varsity Basketball Coach\nDanbury, NC\nSeptember 2025 - Present\n\nTeach and simplify complex basketball concepts, translating advanced strategies into actionable skills that improve player execution and team performance.\nBridge the gap between coaching knowledge and player execution by building understanding, confidence, and consistency across varied skill levels.\nCollaborate on strategy to maximize team strengths and develop adaptable game plans that promote efficient, winning basketball."
+  },
+  {
+    "objectID": "resume.html#additional-information",
+    "href": "resume.html#additional-information",
+    "title": "Resume",
+    "section": "Additional Information",
+    "text": "Additional Information\n\nCryptocurrency Club\nBusiness Technology Club\nUNC COVID Testing Center Volunteer"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects.html#available-projects",
+    "href": "projects.html#available-projects",
+    "title": "Projects",
+    "section": "",
+    "text": "This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects.html#additional-projects-coming-soon",
+    "href": "projects.html#additional-projects-coming-soon",
+    "title": "Projects",
+    "section": "Additional Projects Coming Soon",
+    "text": "Additional Projects Coming Soon\nThe following projects will be added once their repositories or collaborator access are available:\n\nUNC Baseball Attendance Prediction\nCourtSpace 3D: Interactive NBA Shot Visualization App\nPitch Forecaster: MLB Pitch Type Prediction\nNBA Wearable Sensor Data Governance Case Study"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Daniel Fulk",
+    "section": "",
+    "text": "I recently completed my Master’s in Applied Data Science (MADS) from UNC Chapel Hill. The program focused on the full data life cycle, including databases, data engineering, predictive modeling, applied machine learning, and deep learning. Throughout my assignments and projects, I primarily focused on sports analytics, using data science methods to analyze team performance, player trends, predictive outcomes, and decision-making in sports contexts."
+  },
+  {
+    "objectID": "index.html#featured-project",
+    "href": "index.html#featured-project",
+    "title": "Daniel Fulk",
+    "section": "Featured Project",
+    "text": "Featured Project\n\nThe Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nView Project"
+  },
+  {
+    "objectID": "index.html#more-projects-coming-soon",
+    "href": "index.html#more-projects-coming-soon",
+    "title": "Daniel Fulk",
+    "section": "More Projects Coming Soon",
+    "text": "More Projects Coming Soon\nAdditional sports analytics and applied data science projects will be added as their repositories become publicly available, including collaborative projects focused on UNC baseball attendance forecasting, NBA shot visualization, and MLB pitch type prediction."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am a recent Master’s in Applied Data Science graduate from UNC Chapel Hill with interests in sports analytics, predictive modeling, data visualization, and applied machine learning.\nMy project work has focused heavily on using data science methods to analyze sports performance, forecast outcomes, and communicate insights through reproducible analysis and interactive tools."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Email: danielfulk317@gmail.com\nLinkedIn: LinkedIn Profile\nGitHub: GitHub Profile"
+  }
+]

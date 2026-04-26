@@ -1,0 +1,79 @@
+---
+title: "Resume"
+---
+
+[Download Resume PDF](files/Daniel_Fulk_Resume.pdf)
+
+## Contact
+
+**Email:** danielfulk317@gmail.com
+**Phone:** (336)-972-7062  
+
+## Education
+
+### University of North Carolina at Chapel Hill  
+**Master of Applied Data Science (MADS)**  
+Completed April 2026
+
+**B.S. Economics, Minor in Data Science**  
+May 2024
+
+**GPA:** 3.14
+
+### Honors and Awards
+
+- Dean's List
+
+## Technical Skills
+
+Python, SQL, pandas, scikit-learn, TensorFlow/Keras, Optuna, Plotly, Streamlit, GitHub, Jupyter, data cleaning, feature engineering, predictive modeling, machine learning, data visualization, sports analytics, and applied data science.
+
+## Selected Projects
+
+### Next-Pitch Prediction in Baseball  
+**Analyst**  
+Chapel Hill, NC  
+May 2025
+
+- Built a machine learning pipeline to predict the next pitch type in MLB games using Statcast and Baseball Savant pitch-level data.
+- Led a data engineering process that used streaming ingestion, lagged features, pitcher/batter-specific historical tendencies, and score-context variables to create a game-aware feature set.
+- Implemented and compared logistic regression, random forest, and neural network models, tuning hyperparameters with Optuna and validating performance across MLB divisions for generalizability.
+- Designed an ensemble model that integrated neural network and tree-based predictors, improving class balance and achieving 46% accuracy.
+- Delivered a research-backed sports analytics framework showing how pitch sequencing, game context, and player tendencies can be modeled to support predictive insight in baseball strategy.
+
+### NBA Shot Chart Data Visualization Tool  
+**Developer**  
+Chapel Hill, NC  
+August 2025
+
+- Developed an interactive 3D NBA shot analytics platform in Python using Plotly and Streamlit to visualize player shooting performance spatially and contextually.
+- Designed custom 3D half-court geometry and parabolic shot trajectories to visualize shot paths in real time based on each attempt's position relative to the hoop.
+- Engineered zone-based field goal percentage models comparing player efficiency to league averages using NBA Stats API data and dynamic binning algorithms.
+- Applied spatial data processing and statistical aggregation to derive performance differentials across shot zones and shooting contexts.
+- Optimized data pipelines and caching logic to support real-time analytical exploration without redundant API queries.
+
+## Work Experience and Community Involvement
+
+### Javara Research  
+**Intern with the Finance Team**  
+Winston-Salem, NC  
+2023 - Current
+
+- Identified potential monthly incremental revenue from changes in how patients were screened for clinical trials based on screen-fail payment terms, with the highest month totaling up to $2,986,589.25.
+- Conducted patient-level data cleaning in the clinical trial management system to ensure accurate aggregate metrics for each study and precise record keeping.
+- Contributed to building new trials in the clinical trial management system to align with sponsor-approved protocols, helping ensure that trial data and related financial information were recorded and managed correctly.
+
+### North Stokes High School Boys Basketball  
+**Assistant Varsity Basketball Coach**  
+Danbury, NC  
+September 2025 - Present
+
+- Teach and simplify complex basketball concepts, translating advanced strategies into actionable skills that improve player execution and team performance.
+- Bridge the gap between coaching knowledge and player execution by building understanding, confidence, and consistency across varied skill levels.
+- Collaborate on strategy to maximize team strengths and develop adaptable game plans that promote efficient, winning basketball.
+
+## Additional Information
+
+- Cryptocurrency Club
+- Business Technology Club
+- UNC COVID Testing Center Volunteer

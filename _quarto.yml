@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - projects.qmd
+    - about.qmd
+    - resume.qmd
+    - contact.qmd
+    - projects/three-point-effect.qmd
+
+website:
+  title: "Daniel Fulk"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: resume.qmd
+        text: Resume
+      - href: about.qmd
+        text: About
+      - href: contact.qmd
+        text: Contact
+
+format:
+  html:
+    theme: cosmo
+    toc: false

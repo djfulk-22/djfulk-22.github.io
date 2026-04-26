@@ -1,0 +1,23 @@
+---
+title: "Projects"
+---
+
+## Available Projects
+
+### The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning
+
+This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.
+
+**Skills shown:** Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation
+
+[View Project](projects/three-point-effect.qmd)  
+[View GitHub Repository](https://github.com/djfulk-22/The-Three-Point-Effect)
+
+## Additional Projects Coming Soon
+
+The following projects will be added once their repositories or collaborator access are available:
+
+- UNC Baseball Attendance Prediction
+- CourtSpace 3D: Interactive NBA Shot Visualization App
+- Pitch Forecaster: MLB Pitch Type Prediction
+- NBA Wearable Sensor Data Governance Case Study

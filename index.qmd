@@ -1,0 +1,17 @@
+---
+title: "Daniel Fulk"
+---
+
+I recently completed my Master's in Applied Data Science (MADS) from UNC Chapel Hill. The program focused on the full data life cycle, including databases, data engineering, predictive modeling, applied machine learning, and deep learning. Throughout my assignments and projects, I primarily focused on sports analytics, using data science methods to analyze team performance, player trends, predictive outcomes, and decision-making in sports contexts.
+
+## Featured Project
+
+### The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning
+
+This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.
+
+[View Project](projects/three-point-effect.qmd)
+
+## More Projects Coming Soon
+
+Additional sports analytics and applied data science projects will be added as their repositories become publicly available, including collaborative projects focused on UNC baseball attendance forecasting, NBA shot visualization, and MLB pitch type prediction.

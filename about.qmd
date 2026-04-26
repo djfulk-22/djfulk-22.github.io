@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+I am a recent Master's in Applied Data Science graduate from UNC Chapel Hill with interests in sports analytics, predictive modeling, data visualization, and applied machine learning.
+
+My project work has focused heavily on using data science methods to analyze sports performance, forecast outcomes, and communicate insights through reproducible analysis and interactive tools.

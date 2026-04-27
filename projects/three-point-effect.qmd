@@ -57,7 +57,7 @@ The visualization also helps show how different NBA eras can produce very differ
 
 This scatterplot shows the relationship between team three-point percentage and win percentage. The overall pattern suggests that teams shooting better from three-point range tend to win more games, but the relationship is not perfect.
 
-The outliers are important because they show how the relationship between three-point shooting and success has changed over time.The 1982 Los Angeles Lakers were highly successful despite low three-point usage, while the 2015 Golden State Warriors represent a modern example of a team whose success was closely tied to high-volume, high-efficiency three-point shooting.
+The outliers are important because they show how the relationship between three-point shooting and success has changed over time. The 1982 Los Angeles Lakers were highly successful despite low three-point usage, while the 2015 Golden State Warriors represent a modern example of a team whose success was closely tied to high-volume, high-efficiency three-point shooting.
 
 ## Main Findings
 

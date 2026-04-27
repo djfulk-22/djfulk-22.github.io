@@ -1,5 +1,201 @@
 [
   {
+    "objectID": "projects/courtspace-3d.html",
+    "href": "projects/courtspace-3d.html",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "",
+    "text": "CourtSpace 3D is an interactive Streamlit application for exploring NBA player shot patterns through a 3D half-court visualization. The app allows users to select a player, season range, and shot context, then view each shot as a 3D trajectory over a realistic NBA half court.\nThe project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the nba_api package.\nView Live App\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#project-summary",
+    "href": "projects/courtspace-3d.html#project-summary",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "",
+    "text": "CourtSpace 3D is an interactive Streamlit application for exploring NBA player shot patterns through a 3D half-court visualization. The app allows users to select a player, season range, and shot context, then view each shot as a 3D trajectory over a realistic NBA half court.\nThe project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the nba_api package.\nView Live App\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#project-motivation",
+    "href": "projects/courtspace-3d.html#project-motivation",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Project Motivation",
+    "text": "Project Motivation\nTraditional NBA shot charts are usually shown as flat 2D visuals. While useful, those charts can make it difficult to quickly understand shot trajectory, spatial patterns, and player efficiency in a more intuitive way.\nCourtSpace 3D was designed to make shot chart data more interactive and visually engaging. Instead of only showing where a shot was taken, the app renders each attempt as a 3D arc from the shot location to the basket. Users can then filter the visualization by player, season, shot type, opponent, venue, quarter, distance, and make/miss result."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#my-role",
+    "href": "projects/courtspace-3d.html#my-role",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "My Role",
+    "text": "My Role\nThis was a collaborative project with Arvind Madan.\nMy primary contributions focused on building the foundation of the visualization tool:\n\nCreated the first working prototype using a static LeBron James shot dataset\nImplemented the initial Streamlit version of the app\nBuilt the core visualization pipeline for rendering player shot attempts as 3D trajectories\nAdded hover text metadata for shot-level context\nAdded quarter filtering\nBuilt the full hot/cold zone heatmap mode\nAdded the user-controlled heatmap scaling slider\nDesigned the caching system used to handle NBA API requests efficiently"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#partner-contributions",
+    "href": "projects/courtspace-3d.html#partner-contributions",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Partner Contributions",
+    "text": "Partner Contributions\nArvind Madan expanded the app with advanced filters and user interface improvements, including:\n\nMax-shots slider\nMakes/misses filter\nHome/away venue filter\nShot distance filter\nShot type filter\nOpponent filter\nAutomatically updating player and team images\nMulti-season query functionality\n\nTogether, these contributions produced an interactive app that combines NBA shot chart data, 3D rendering, contextual filtering, and league-relative efficiency analysis."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#app-preview",
+    "href": "projects/courtspace-3d.html#app-preview",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "App Preview",
+    "text": "App Preview"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#key-features",
+    "href": "projects/courtspace-3d.html#key-features",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Key Features",
+    "text": "Key Features\n\nInteractive 3D Shot Arcs\nEach shot is rendered as a 3D trajectory from its court location to the rim. Makes and misses can be colored differently, allowing users to quickly identify successful and unsuccessful shot attempts.\n\n\nRealistic NBA Half-Court Geometry\nThe app builds a realistic half-court scene with a floor, paint, free throw line, restricted area, three-point line, rim, and backboard. The court geometry is defined in feet to match NBA-style dimensions.\n\n\nPlayer and Season Selection\nUsers can select an NBA player and choose either a single season or a multi-season range. The app supports both regular season and playoff data.\n\n\nContextual Shot Filters\nThe app allows users to filter shots by:\n\nMakes and misses\nHome or away games\nQuarter and overtime\nShot distance\nShot type\nOpponent\nMaximum number of shots displayed\n\n\n\nShot Profile Summary Metrics\nFor the selected view, the app reports summary metrics such as:\n\nTotal shots\nField goal percentage\nAverage shot distance\n\n\n\nHot/Cold Zone Heatmap\nThe hot/cold zone heatmap compares a player’s field goal percentage by court region against league average. This helps identify where a player shoots better or worse than the league from specific areas of the floor.\nThe heatmap is calculated as:\nPlayer FG% - League FG%\nPositive values indicate areas where the player shoots above league average, while negative values indicate areas where the player shoots below league average."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#how-the-app-works",
+    "href": "projects/courtspace-3d.html#how-the-app-works",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "How the App Works",
+    "text": "How the App Works\nThe app uses nba_api to retrieve player shot chart data from NBA Stats. After the user selects a player and season range, the app loads player shot attempts and league-average zone data.\nThe visualization pipeline then:\n\nLoads player and league shot data\nAdds venue and opponent information\nApplies user-selected filters\nConverts NBA shot coordinates into court coordinates\nBuilds a 3D half-court using Plotly\nRenders shot attempts as 3D arcs\nOptionally overlays the league-relative hot/cold zone heatmap"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#technical-highlights",
+    "href": "projects/courtspace-3d.html#technical-highlights",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Technical Highlights",
+    "text": "Technical Highlights\n\nBuilt a modular Streamlit app with separate source files for data loading, filtering, court geometry, shot arcs, heatmap logic, zone classification, and 3D rendering\nUsed cached NBA API calls to reduce unnecessary requests and improve app performance\nConverted NBA shot chart coordinates into a custom 3D court coordinate system\nRendered shot attempts as quadratic Bezier arcs from shot location to the rim\nCompared player shooting efficiency to league-average zone performance\nAdded performance controls to limit the number of rendered shots for smoother interaction"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#tools-used",
+    "href": "projects/courtspace-3d.html#tools-used",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Tools Used",
+    "text": "Tools Used\nPython, Streamlit, Plotly, pandas, NumPy, nba_api, GitHub, and Streamlit Community Cloud."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#skills-demonstrated",
+    "href": "projects/courtspace-3d.html#skills-demonstrated",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Skills Demonstrated",
+    "text": "Skills Demonstrated\n\nSports analytics\nInteractive dashboard development\nData visualization\nAPI-based data collection\nSpatial data processing\nFeature filtering and user interface design\n3D visualization with Plotly\nStreamlit app deployment\nCollaborative project development"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#known-limitations",
+    "href": "projects/courtspace-3d.html#known-limitations",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Known Limitations",
+    "text": "Known Limitations\nThe app depends on NBA Stats data through nba_api, so load times and availability can depend on the NBA Stats endpoint. Older seasons may also contain less consistent shot-tracking data because of historical differences in NBA data collection.\nRendering thousands of 3D arcs can also be computationally heavy, so the app includes a maximum shot display slider and sampling logic to improve performance."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#repository",
+    "href": "projects/courtspace-3d.html#repository",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Repository",
+    "text": "Repository\nThe full project repository contains the Streamlit app, helper modules, requirements file, and documentation.\nView Live App\nView GitHub Repository"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Email: danielfulk317@gmail.com\nLinkedIn: LinkedIn Profile\nGitHub: GitHub Profile"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am a recent Master’s in Applied Data Science graduate from UNC Chapel Hill with interests in sports analytics, predictive modeling, data visualization, and applied machine learning.\nMy path into data science was not completely linear. I originally entered college as a chemistry major with the goal of eventually becoming an orthodontist. After my freshman year, I realized that while I respected the field, it was not the area I felt genuinely motivated to build my future around.\nThat realization led me to change direction and pursue a Bachelor of Science in Economics. Economics felt like a much better fit because it gave me a way to think analytically about real-world behavior, decision-making, incentives, and measurable outcomes. As I moved further into the major, I became increasingly interested in using data to answer practical questions and communicate evidence-based insights.\nThrough that experience, I discovered UNC Chapel Hill’s data science minor, which gave me my first structured exposure to programming, statistical analysis, and applied data work. That minor ultimately became the bridge between my economics background and my decision to continue into UNC’s Master of Applied Data Science program.\nSince then, my project work has focused heavily on using data science methods to analyze sports performance, forecast outcomes, and communicate insights through reproducible analysis and interactive tools. I am especially interested in projects that combine technical modeling with clear decision-making value, whether through predictive analytics, dashboards, or data-driven storytelling."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Daniel Fulk",
+    "section": "",
+    "text": "I recently completed my Master’s in Applied Data Science (MADS) from UNC Chapel Hill. The program focused on the full data life cycle, including databases, data engineering, predictive modeling, applied machine learning, and deep learning. Throughout my assignments and projects, I primarily focused on sports analytics, using data science methods to analyze team performance, player trends, predictive outcomes, and decision-making in sports contexts."
+  },
+  {
+    "objectID": "index.html#featured-project",
+    "href": "index.html#featured-project",
+    "title": "Daniel Fulk",
+    "section": "Featured Project",
+    "text": "Featured Project\n\nThe Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nView Project"
+  },
+  {
+    "objectID": "index.html#more-projects-coming-soon",
+    "href": "index.html#more-projects-coming-soon",
+    "title": "Daniel Fulk",
+    "section": "More Projects Coming Soon",
+    "text": "More Projects Coming Soon\nAdditional sports analytics and applied data science projects will be added as their repositories become publicly available, including collaborative projects focused on UNC baseball attendance forecasting, NBA shot visualization, and MLB pitch type prediction."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nCollaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.\nMy role: Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.\nSkills shown: Python, Streamlit, Plotly, nba_api, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development\nView Project\nView Live App\nView GitHub Repository\n\n\n\nBuilt this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects.html#available-projects",
+    "href": "projects.html#available-projects",
+    "title": "Projects",
+    "section": "",
+    "text": "This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nCollaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.\nMy role: Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.\nSkills shown: Python, Streamlit, Plotly, nba_api, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development\nView Project\nView Live App\nView GitHub Repository\n\n\n\nBuilt this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects.html#additional-projects-coming-soon",
+    "href": "projects.html#additional-projects-coming-soon",
+    "title": "Projects",
+    "section": "Additional Projects Coming Soon",
+    "text": "Additional Projects Coming Soon\nThe following projects will be added once their repositories or collaborator access are available:\n\nUNC Baseball Attendance Prediction\nCourtSpace 3D: Interactive NBA Shot Visualization App\nPitch Forecaster: MLB Pitch Type Prediction\nNBA Wearable Sensor Data Governance Case Study"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Download Resume PDF"
+  },
+  {
+    "objectID": "resume.html#contact",
+    "href": "resume.html#contact",
+    "title": "Resume",
+    "section": "Contact",
+    "text": "Contact\nEmail: danielfulk317@gmail.com Phone: (336)-972-7062"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Resume",
+    "section": "Education",
+    "text": "Education\n\nUniversity of North Carolina at Chapel Hill\nMaster of Applied Data Science (MADS)\nCompleted April 2026\nB.S. Economics, Minor in Data Science\nMay 2024\nGPA: 3.14\n\n\nHonors and Awards\n\nDean’s List"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "Resume",
+    "section": "Technical Skills",
+    "text": "Technical Skills\nPython, SQL, pandas, scikit-learn, TensorFlow/Keras, Optuna, Plotly, Streamlit, GitHub, Jupyter, data cleaning, feature engineering, predictive modeling, machine learning, data visualization, sports analytics, and applied data science."
+  },
+  {
+    "objectID": "resume.html#selected-projects",
+    "href": "resume.html#selected-projects",
+    "title": "Resume",
+    "section": "Selected Projects",
+    "text": "Selected Projects\n\nNext-Pitch Prediction in Baseball\nAnalyst\nChapel Hill, NC\nMay 2025\n\nBuilt a machine learning pipeline to predict the next pitch type in MLB games using Statcast and Baseball Savant pitch-level data.\nLed a data engineering process that used streaming ingestion, lagged features, pitcher/batter-specific historical tendencies, and score-context variables to create a game-aware feature set.\nImplemented and compared logistic regression, random forest, and neural network models, tuning hyperparameters with Optuna and validating performance across MLB divisions for generalizability.\nDesigned an ensemble model that integrated neural network and tree-based predictors, improving class balance and achieving 46% accuracy.\nDelivered a research-backed sports analytics framework showing how pitch sequencing, game context, and player tendencies can be modeled to support predictive insight in baseball strategy.\n\n\n\nNBA Shot Chart Data Visualization Tool\nDeveloper\nChapel Hill, NC\nAugust 2025\n\nDeveloped an interactive 3D NBA shot analytics platform in Python using Plotly and Streamlit to visualize player shooting performance spatially and contextually.\nDesigned custom 3D half-court geometry and parabolic shot trajectories to visualize shot paths in real time based on each attempt’s position relative to the hoop.\nEngineered zone-based field goal percentage models comparing player efficiency to league averages using NBA Stats API data and dynamic binning algorithms.\nApplied spatial data processing and statistical aggregation to derive performance differentials across shot zones and shooting contexts.\nOptimized data pipelines and caching logic to support real-time analytical exploration without redundant API queries."
+  },
+  {
+    "objectID": "resume.html#work-experience-and-community-involvement",
+    "href": "resume.html#work-experience-and-community-involvement",
+    "title": "Resume",
+    "section": "Work Experience and Community Involvement",
+    "text": "Work Experience and Community Involvement\n\nJavara Research\nIntern with the Finance Team\nWinston-Salem, NC\n2023 - Current\n\nIdentified potential monthly incremental revenue from changes in how patients were screened for clinical trials based on screen-fail payment terms, with the highest month totaling up to $2,986,589.25.\nConducted patient-level data cleaning in the clinical trial management system to ensure accurate aggregate metrics for each study and precise record keeping.\nContributed to building new trials in the clinical trial management system to align with sponsor-approved protocols, helping ensure that trial data and related financial information were recorded and managed correctly.\n\n\n\nNorth Stokes High School Boys Basketball\nAssistant Varsity Basketball Coach\nDanbury, NC\nSeptember 2025 - Present\n\nTeach and simplify complex basketball concepts, translating advanced strategies into actionable skills that improve player execution and team performance.\nBridge the gap between coaching knowledge and player execution by building understanding, confidence, and consistency across varied skill levels.\nCollaborate on strategy to maximize team strengths and develop adaptable game plans that promote efficient, winning basketball."
+  },
+  {
+    "objectID": "resume.html#additional-information",
+    "href": "resume.html#additional-information",
+    "title": "Resume",
+    "section": "Additional Information",
+    "text": "Additional Information\n\nCryptocurrency Club\nBusiness Technology Club\nUNC COVID Testing Center Volunteer"
+  },
+  {
     "objectID": "projects/three-point-effect.html",
     "href": "projects/three-point-effect.html",
     "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
@@ -82,110 +278,5 @@
     "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
     "section": "Repository",
     "text": "Repository\nThe full repository includes the notebook, collected data outputs, cached NBA API files, and the complete README with additional technical details.\nView GitHub Repository"
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "Resume",
-    "section": "",
-    "text": "Download Resume PDF"
-  },
-  {
-    "objectID": "resume.html#contact",
-    "href": "resume.html#contact",
-    "title": "Resume",
-    "section": "Contact",
-    "text": "Contact\nEmail: danielfulk317@gmail.com Phone: (336)-972-7062"
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "Resume",
-    "section": "Education",
-    "text": "Education\n\nUniversity of North Carolina at Chapel Hill\nMaster of Applied Data Science (MADS)\nCompleted April 2026\nB.S. Economics, Minor in Data Science\nMay 2024\nGPA: 3.14\n\n\nHonors and Awards\n\nDean’s List"
-  },
-  {
-    "objectID": "resume.html#technical-skills",
-    "href": "resume.html#technical-skills",
-    "title": "Resume",
-    "section": "Technical Skills",
-    "text": "Technical Skills\nPython, SQL, pandas, scikit-learn, TensorFlow/Keras, Optuna, Plotly, Streamlit, GitHub, Jupyter, data cleaning, feature engineering, predictive modeling, machine learning, data visualization, sports analytics, and applied data science."
-  },
-  {
-    "objectID": "resume.html#selected-projects",
-    "href": "resume.html#selected-projects",
-    "title": "Resume",
-    "section": "Selected Projects",
-    "text": "Selected Projects\n\nNext-Pitch Prediction in Baseball\nAnalyst\nChapel Hill, NC\nMay 2025\n\nBuilt a machine learning pipeline to predict the next pitch type in MLB games using Statcast and Baseball Savant pitch-level data.\nLed a data engineering process that used streaming ingestion, lagged features, pitcher/batter-specific historical tendencies, and score-context variables to create a game-aware feature set.\nImplemented and compared logistic regression, random forest, and neural network models, tuning hyperparameters with Optuna and validating performance across MLB divisions for generalizability.\nDesigned an ensemble model that integrated neural network and tree-based predictors, improving class balance and achieving 46% accuracy.\nDelivered a research-backed sports analytics framework showing how pitch sequencing, game context, and player tendencies can be modeled to support predictive insight in baseball strategy.\n\n\n\nNBA Shot Chart Data Visualization Tool\nDeveloper\nChapel Hill, NC\nAugust 2025\n\nDeveloped an interactive 3D NBA shot analytics platform in Python using Plotly and Streamlit to visualize player shooting performance spatially and contextually.\nDesigned custom 3D half-court geometry and parabolic shot trajectories to visualize shot paths in real time based on each attempt’s position relative to the hoop.\nEngineered zone-based field goal percentage models comparing player efficiency to league averages using NBA Stats API data and dynamic binning algorithms.\nApplied spatial data processing and statistical aggregation to derive performance differentials across shot zones and shooting contexts.\nOptimized data pipelines and caching logic to support real-time analytical exploration without redundant API queries."
-  },
-  {
-    "objectID": "resume.html#work-experience-and-community-involvement",
-    "href": "resume.html#work-experience-and-community-involvement",
-    "title": "Resume",
-    "section": "Work Experience and Community Involvement",
-    "text": "Work Experience and Community Involvement\n\nJavara Research\nIntern with the Finance Team\nWinston-Salem, NC\n2023 - Current\n\nIdentified potential monthly incremental revenue from changes in how patients were screened for clinical trials based on screen-fail payment terms, with the highest month totaling up to $2,986,589.25.\nConducted patient-level data cleaning in the clinical trial management system to ensure accurate aggregate metrics for each study and precise record keeping.\nContributed to building new trials in the clinical trial management system to align with sponsor-approved protocols, helping ensure that trial data and related financial information were recorded and managed correctly.\n\n\n\nNorth Stokes High School Boys Basketball\nAssistant Varsity Basketball Coach\nDanbury, NC\nSeptember 2025 - Present\n\nTeach and simplify complex basketball concepts, translating advanced strategies into actionable skills that improve player execution and team performance.\nBridge the gap between coaching knowledge and player execution by building understanding, confidence, and consistency across varied skill levels.\nCollaborate on strategy to maximize team strengths and develop adaptable game plans that promote efficient, winning basketball."
-  },
-  {
-    "objectID": "resume.html#additional-information",
-    "href": "resume.html#additional-information",
-    "title": "Resume",
-    "section": "Additional Information",
-    "text": "Additional Information\n\nCryptocurrency Club\nBusiness Technology Club\nUNC COVID Testing Center Volunteer"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nBuilt a personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects.html#available-projects",
-    "href": "projects.html#available-projects",
-    "title": "Projects",
-    "section": "",
-    "text": "This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nBuilt a personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects.html#additional-projects-coming-soon",
-    "href": "projects.html#additional-projects-coming-soon",
-    "title": "Projects",
-    "section": "Additional Projects Coming Soon",
-    "text": "Additional Projects Coming Soon\nThe following projects will be added once their repositories or collaborator access are available:\n\nUNC Baseball Attendance Prediction\nCourtSpace 3D: Interactive NBA Shot Visualization App\nPitch Forecaster: MLB Pitch Type Prediction\nNBA Wearable Sensor Data Governance Case Study"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Daniel Fulk",
-    "section": "",
-    "text": "I recently completed my Master’s in Applied Data Science (MADS) from UNC Chapel Hill. The program focused on the full data life cycle, including databases, data engineering, predictive modeling, applied machine learning, and deep learning. Throughout my assignments and projects, I primarily focused on sports analytics, using data science methods to analyze team performance, player trends, predictive outcomes, and decision-making in sports contexts."
-  },
-  {
-    "objectID": "index.html#featured-project",
-    "href": "index.html#featured-project",
-    "title": "Daniel Fulk",
-    "section": "Featured Project",
-    "text": "Featured Project\n\nThe Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nView Project"
-  },
-  {
-    "objectID": "index.html#more-projects-coming-soon",
-    "href": "index.html#more-projects-coming-soon",
-    "title": "Daniel Fulk",
-    "section": "More Projects Coming Soon",
-    "text": "More Projects Coming Soon\nAdditional sports analytics and applied data science projects will be added as their repositories become publicly available, including collaborative projects focused on UNC baseball attendance forecasting, NBA shot visualization, and MLB pitch type prediction."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I am a recent Master’s in Applied Data Science graduate from UNC Chapel Hill with interests in sports analytics, predictive modeling, data visualization, and applied machine learning.\nMy path into data science was not completely linear. I originally entered college as a chemistry major with the goal of eventually becoming an orthodontist. After my freshman year, I realized that while I respected the field, it was not the area I felt genuinely motivated to build my future around.\nThat realization led me to change direction and pursue a Bachelor of Science in Economics. Economics felt like a much better fit because it gave me a way to think analytically about real-world behavior, decision-making, incentives, and measurable outcomes. As I moved further into the major, I became increasingly interested in using data to answer practical questions and communicate evidence-based insights.\nThrough that experience, I discovered UNC Chapel Hill’s data science minor, which gave me my first structured exposure to programming, statistical analysis, and applied data work. That minor ultimately became the bridge between my economics background and my decision to continue into UNC’s Master of Applied Data Science program.\nSince then, my project work has focused heavily on using data science methods to analyze sports performance, forecast outcomes, and communicate insights through reproducible analysis and interactive tools. I am especially interested in projects that combine technical modeling with clear decision-making value, whether through predictive analytics, dashboards, or data-driven storytelling."
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "Email: danielfulk317@gmail.com\nLinkedIn: LinkedIn Profile\nGitHub: GitHub Profile"
   }
 ]

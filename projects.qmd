@@ -13,9 +13,21 @@ This project analyzes historical NBA team-level data to examine the relationship
 [View Project](projects/three-point-effect.qmd)  
 [View GitHub Repository](https://github.com/djfulk-22/The-Three-Point-Effect)
 
+### CourtSpace 3D: Interactive NBA Shot Visualization App
+
+Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.
+
+**My role:** Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.
+
+**Skills shown:** Python, Streamlit, Plotly, `nba_api`, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development
+
+[View Project](projects/courtspace-3d.qmd)  
+[View Live App](https://courtspace3d-v4.streamlit.app/)  
+[View GitHub Repository](https://github.com/mxngojuice/CourtSpace3D-v4/tree/main)
+
 ### Personal Portfolio Website
 
-Built a personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.
+Built this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.
 
 **Skills shown:** Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development
 

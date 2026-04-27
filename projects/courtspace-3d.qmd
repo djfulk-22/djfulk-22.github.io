@@ -9,7 +9,7 @@ CourtSpace 3D is an interactive Streamlit application for exploring NBA player s
 The project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the `nba_api` package.
 
 [View Live App](https://courtspace3d-v4.streamlit.app/)  
-[View GitHub Repository](COURTSPACE_REPO_LINK_HERE)
+[View GitHub Repository](https://github.com/mxngojuice/CourtSpace3D-v4/tree/main)
 
 ## Project Motivation
 

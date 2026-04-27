@@ -13,6 +13,15 @@ This project analyzes historical NBA team-level data to examine the relationship
 [View Project](projects/three-point-effect.qmd)  
 [View GitHub Repository](https://github.com/djfulk-22/The-Three-Point-Effect)
 
+### Personal Portfolio Website
+
+Built a personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.
+
+**Skills shown:** Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development
+
+[View Website](https://djfulk-22.github.io/)  
+[View GitHub Repository](https://github.com/djfulk-22/djfulk-22.github.io)
+
 ## Additional Projects Coming Soon
 
 The following projects will be added once their repositories or collaborator access are available:

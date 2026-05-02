@@ -102,11 +102,6 @@ The final model combined the random forest and neural network predictions. The e
 
 This approach was chosen because the random forest had stronger overall accuracy and interpretability, while the neural network performed better on class-wise balance for underrepresented pitch types.
 
-## Hyperparameter Tuning
-
-![](../images/pitch-forecaster/NN_optimization.png){fig-align="center"}
-
-The neural network was tuned with Optuna using a hybrid metric that balanced overall accuracy, mean F1, and minimum F1. This helped the model selection process account for both general prediction accuracy and performance on underrepresented pitch classes.
 
 ## Final Results
 

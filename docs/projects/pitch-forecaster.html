@@ -242,15 +242,6 @@ ul.task-list li input[type="checkbox"] {
 <p>This approach was chosen because the random forest had stronger overall accuracy and interpretability, while the neural network performed better on class-wise balance for underrepresented pitch types.</p>
 </section>
 </section>
-<section id="hyperparameter-tuning" class="level2">
-<h2 class="anchored" data-anchor-id="hyperparameter-tuning">Hyperparameter Tuning</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/pitch-forecaster/NN_optimization.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<p>The neural network was tuned with Optuna using a hybrid metric that balanced overall accuracy, mean F1, and minimum F1. This helped the model selection process account for both general prediction accuracy and performance on underrepresented pitch classes.</p>
-</section>
 <section id="final-results" class="level2">
 <h2 class="anchored" data-anchor-id="final-results">Final Results</h2>
 <p>The final ensemble model produced the most balanced results across the evaluated models.</p>

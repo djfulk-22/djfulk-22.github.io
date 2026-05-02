@@ -56,13 +56,6 @@
     "text": "Modeling Approach\nThe project evaluated multiple multiclass classification approaches.\n\nLogistic Regression Baseline\nThe first model was a multinomial logistic regression baseline. This model provided a useful comparison point and helped establish how difficult the classification problem was before moving to more flexible approaches.\n\n\nRandom Forest\nThe random forest model was used to capture nonlinear relationships between pitch type, game context, pitcher tendencies, and batter context. It improved overall accuracy compared with the baseline and performed well on more common pitch types.\n\n\nNeural Network\nThe neural network was designed to improve class-wise performance, especially for underrepresented pitch types. Hyperparameters were tuned using Optuna, and the validation strategy grouped MLB teams into division-based folds to test generalization across different teams and game contexts.\nThe neural network search evaluated architecture choices such as:\n\nNumber of hidden layers\nNeurons per layer\nReLU vs. Leaky ReLU activations\nDropout rates\nL2 regularization\nLearning rate\nBatch size\nClass-weight scaling\nEarly stopping settings\n\n\n\nEnsemble Model\nThe final model combined the random forest and neural network predictions. The ensemble used a weighted combination of the two model outputs, with a 70/30 split favoring the neural network.\nThis approach was chosen because the random forest had stronger overall accuracy and interpretability, while the neural network performed better on class-wise balance for underrepresented pitch types."
   },
   {
-    "objectID": "projects/pitch-forecaster.html#hyperparameter-tuning",
-    "href": "projects/pitch-forecaster.html#hyperparameter-tuning",
-    "title": "Pitch Forecaster: MLB Pitch Type Prediction",
-    "section": "Hyperparameter Tuning",
-    "text": "Hyperparameter Tuning\n\n\n\n\n\nThe neural network was tuned with Optuna using a hybrid metric that balanced overall accuracy, mean F1, and minimum F1. This helped the model selection process account for both general prediction accuracy and performance on underrepresented pitch classes."
-  },
-  {
     "objectID": "projects/pitch-forecaster.html#final-results",
     "href": "projects/pitch-forecaster.html#final-results",
     "title": "Pitch Forecaster: MLB Pitch Type Prediction",

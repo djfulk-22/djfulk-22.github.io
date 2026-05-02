@@ -10,6 +10,7 @@ project:
     - projects/three-point-effect.qmd
     - projects/courtspace-3d.qmd
     - projects/pitch-forecaster.qmd
+    - projects/unc-baseball-attendance.qmd
 
 website:
   title: "Daniel Fulk"

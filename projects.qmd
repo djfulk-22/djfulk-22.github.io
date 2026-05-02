@@ -4,9 +4,23 @@ title: "Projects"
 
 ## Available Projects
 
+### UNC Baseball Attendance Prediction
+
+Collaborative MADS capstone project with [Adam Cooke](https://www.linkedin.com/in/adamcookeunc/) and [Arvind Madan](https://www.linkedin.com/in/arvind-aditya-madan-08271174/) for UNC Athletics. Built an end-to-end attendance forecasting framework and Streamlit decision-support application for UNC baseball home games using historical attendance, opponent context, scheduling features, weather, academic calendar timing, Google Trends, promotions, and team performance data.
+
+**My role:** Built the performance-data scraper for UNC and opponent game-level metrics, developed the Streamlit application used to present preseason and midseason forecasts interactively, contributed to project documentation, and continuously refined the scraper and app as project needs evolved.
+
+**Partner contributions:** Adam Cooke led the GoHeels.com attendance scraper, project infrastructure, feature-tier setup, supporting datasets, GitHub organization, and stakeholder coordination. Arvind Madan led data cleaning, feature engineering, master dataset integration, backward feature elimination, weighted cross-validation, preseason workflow adaptation, and additional weather- and attendance-related feature engineering.
+
+**Skills shown:** Python, pandas, scikit-learn, Optuna, SHAP, Streamlit, Selenium, data scraping, feature engineering, predictive modeling, sports analytics, dashboard development, automation, stakeholder communication
+
+[View Project](projects/unc-baseball-attendance.qmd)  
+[View Streamlit App](https://unc-baseball-attendance-forecasting.streamlit.app/)  
+GitHub repository link will be added once the repository is publicly available.
+
 ### CourtSpace 3D: Interactive NBA Shot Visualization App
 
-Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.
+Collaborative Streamlit app with [Arvind Madan](https://www.linkedin.com/in/arvind-aditya-madan-08271174/) that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.
 
 **My role:** Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.
 
@@ -18,7 +32,7 @@ Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot at
 
 ### Pitch Forecaster: MLB Pitch Type Prediction
 
-Collaborative machine learning project with Arvind Madan and Elliott Walker focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.
+Collaborative machine learning project with [Arvind Madan](https://www.linkedin.com/in/arvind-aditya-madan-08271174/) and [Elliott Walker](https://www.linkedin.com/in/walkere23/) focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.
 
 **Project work:** Developed a machine learning pipeline that cleaned and transformed pitch-level data, engineered lagged sequence features, enriched observations with pitcher and batter arsenal tendencies, and evaluated multiple modeling approaches including multinomial logistic regression, random forest, neural network, and ensemble models. The final ensemble model balanced overall accuracy with stronger class-wise performance across imbalanced pitch types.
 
@@ -48,7 +62,4 @@ Built this personal portfolio website using Quarto and GitHub Pages to showcase 
 
 ## Additional Projects Coming Soon
 
-The following projects will be added once their repositories or collaborator access are available:
-
-- UNC Baseball Attendance Prediction
 - NBA Wearable Sensor Data Governance Case Study

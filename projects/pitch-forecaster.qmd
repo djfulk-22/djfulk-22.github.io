@@ -62,6 +62,12 @@ A major part of the project involved converting raw pitch-level data into model-
 
 The use of lagged features was especially important because pitch selection is sequential. A pitcher's previous choice can influence the next pitch, but the feature engineering needed to preserve the correct game and pitcher ordering so that the first pitch of one appearance did not incorrectly reference the final pitch of another sequence.
 
+## Pipeline Architecture
+
+![](../images/pitch-forecaster/architecture_diagram.jpg){fig-align="center" width="70%"}
+
+The modeling pipeline was designed to stream pitch-level data through cleaning, transformation, feature enrichment, and train/validation/test splitting. The architecture also included pitcher and batter arsenal caches so the model could incorporate historical tendency information without repeatedly recomputing those features.
+
 ## Modeling Approach
 
 The project evaluated multiple multiclass classification approaches.
@@ -96,6 +102,12 @@ The final model combined the random forest and neural network predictions. The e
 
 This approach was chosen because the random forest had stronger overall accuracy and interpretability, while the neural network performed better on class-wise balance for underrepresented pitch types.
 
+## Hyperparameter Tuning
+
+![](../images/pitch-forecaster/NN_optimization.png){fig-align="center"}
+
+The neural network was tuned with Optuna using a hybrid metric that balanced overall accuracy, mean F1, and minimum F1. This helped the model selection process account for both general prediction accuracy and performance on underrepresented pitch classes.
+
 ## Final Results
 
 The final ensemble model produced the most balanced results across the evaluated models.
@@ -123,6 +135,20 @@ The project showed that next-pitch prediction is not just about individual pitch
 - Class imbalance across pitch types
 
 The project also showed why accuracy alone is not enough for this kind of multiclass sports prediction problem. Some pitch types are much more common than others, so model evaluation needed to consider class-wise F1 scores and minority-class performance.
+
+## Final Model Performance
+
+The final ensemble model combined neural network and random forest predictions to balance overall accuracy with stronger class-wise performance across imbalanced pitch types.
+
+| Metric | Final Ensemble Result |
+|---|---:|
+| Accuracy | 46% |
+| Macro F1 | 0.42 |
+| Weighted F1 | 0.45 |
+
+![](../images/pitch-forecaster/Ensemble_confusion_matrix.png){fig-align="center"}
+
+The confusion matrix shows that the model performed best on more common pitch types such as four-seam fastballs, sinkers, and sliders, while still improving balance across less frequent pitch classes compared with earlier models.
 
 ## Technical Highlights
 

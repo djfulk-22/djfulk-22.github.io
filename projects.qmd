@@ -4,15 +4,6 @@ title: "Projects"
 
 ## Available Projects
 
-### The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning
-
-This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.
-
-**Skills shown:** Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation
-
-[View Project](projects/three-point-effect.qmd)  
-[View GitHub Repository](https://github.com/djfulk-22/The-Three-Point-Effect)
-
 ### CourtSpace 3D: Interactive NBA Shot Visualization App
 
 Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.
@@ -35,6 +26,16 @@ Collaborative machine learning project with Arvind Madan and Elliott Walker focu
 
 [View Project](projects/pitch-forecaster.qmd)  
 GitHub repository link will be added once the repository is publicly available.
+
+### The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning
+
+This project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.
+
+**Skills shown:** Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation
+
+[View Project](projects/three-point-effect.qmd)  
+[View GitHub Repository](https://github.com/djfulk-22/The-Three-Point-Effect)
+
 
 ### Personal Portfolio Website
 

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.9.37" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+
+<title>UNC Baseball Attendance Prediction – Daniel Fulk</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+<!-- htmldependencies:E3FAD763 -->
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="/index.html">
+    <span class="navbar-title">Daniel Fulk</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="/index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">UNC Baseball Attendance Prediction</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="project-summary" class="level2">
+<h2>Project Summary</h2>
+<p>UNC Baseball Attendance Prediction is a collaborative MADS capstone project with <a href="https://www.linkedin.com/in/adamcookeunc/">Adam Cooke</a> and <a href="https://www.linkedin.com/in/arvind-aditya-madan-08271174/">Arvind Madan</a> for UNC Athletics. The project built an end-to-end attendance forecasting framework and Streamlit decision-support application for UNC baseball home games using historical attendance, opponent context, scheduling features, weather, academic calendar timing, Google Trends, promotions, and team performance data.</p>
+<p>The project was designed to help UNC Athletics move from attendance planning based mostly on historical averages and scheduling intuition toward a more proactive, data-informed workflow for staffing, marketing, concessions, promotions, and game-day operations.</p>
+<p><a href="https://unc-baseball-attendance-forecasting.streamlit.app/">View Streamlit App</a><br />
+<a href="https://github.com/djfulk-22/Personal-S26-TeamA3-App-Repo-">View Public App Repository</a></p>
+<p>Full project analysis repository link will be added once the complete capstone repository is publicly available.</p>
+</section>
+<section id="stakeholder-context" class="level2">
+<h2>Stakeholder Context</h2>
+<p>UNC Athletics hosts home events across many teams, and attendance affects operational planning, staffing, marketing effectiveness, resource allocation, and fan experience. For UNC baseball, game-day turnout can vary substantially depending on opponent, schedule timing, weather, promotions, team performance, academic calendar context, and broader fan interest.</p>
+<p>The goal of this project was to build a forecasting framework that could generate useful game-level attendance projections and present those forecasts in a way that non-technical stakeholders could use for planning decisions.</p>
+</section>
+<section id="team-and-contributions" class="level2">
+<h2>Team and Contributions</h2>
+<p>This was a collaborative project with <a href="https://www.linkedin.com/in/adamcookeunc/">Adam Cooke</a> and <a href="https://www.linkedin.com/in/arvind-aditya-madan-08271174/">Arvind Madan</a>.</p>
+<section id="my-role" class="level3">
+<h3>My Role</h3>
+<p>My primary responsibilities focused on performance-data scraping, Streamlit development, and documentation.</p>
+<p>My contributions included:</p>
+<ul>
+<li>Built the performance-data scraper for UNC and opponent game-level metrics</li>
+<li>Engineered and integrated performance variables such as scoring, home runs, strikeouts, win percentage, and team-strength indicators</li>
+<li>Developed the Streamlit application used to present preseason and midseason forecasts interactively</li>
+<li>Refined the app layout, calendar view, game-detail view, data explorer, and stakeholder-facing display logic</li>
+<li>Contributed to project documentation and the final project writeup</li>
+<li>Continuously refined both the scraper and app as project needs evolved</li>
+</ul>
+</section>
+<section id="partner-contributions" class="level3">
+<h3>Partner Contributions</h3>
+<p><a href="https://www.linkedin.com/in/adamcookeunc/">Adam Cooke</a> led the GoHeels.com attendance scraper, project infrastructure, feature-tier setup, supporting datasets, GitHub organization, and stakeholder coordination.</p>
+<p><a href="https://www.linkedin.com/in/arvind-aditya-madan-08271174/">Arvind Madan</a> led data cleaning, feature engineering, master dataset integration, backward feature elimination, weighted cross-validation, preseason workflow adaptation, and additional weather- and attendance-related feature engineering.</p>
+<p>All team members contributed to the final presentation and broader project development.</p>
+</section>
+</section>
+<section id="project-objectives" class="level2">
+<h2>Project Objectives</h2>
+<p>The project had four primary objectives:</p>
+<ol type="1">
+<li>Identify key drivers of attendance for UNC baseball home games</li>
+<li>Build predictive models to forecast game-day attendance at the event level</li>
+<li>Create interpretable dashboards that make projections accessible to non-technical stakeholders</li>
+<li>Deliver actionable insights for staffing, promotions, marketing, and operations planning</li>
+</ol>
+<p>Although the project focused on UNC baseball, the methodology was designed to be scalable to other sports, venues, and institutions.</p>
+</section>
+<section id="data-sources" class="level2">
+<h2>Data Sources</h2>
+<p>The modeling dataset combined multiple source files into a unified game-level dataset for UNC baseball.</p>
+<p>Major data sources included:</p>
+<ul>
+<li>UNC baseball attendance and schedule data scraped from GoHeels.com</li>
+<li>UNC and opponent game-level performance data from NCAA stats game logs</li>
+<li>Academic calendar data from UNC Registrar archives</li>
+<li>Enrollment data</li>
+<li>Google Trends web search interest</li>
+<li>Google Trends YouTube search interest</li>
+<li>Team home coordinates and travel-related context</li>
+<li>ACC and opponent-group mappings</li>
+<li>Promotion and event-context data</li>
+</ul>
+<p>Additional datasets were also assembled for generalization testing on NC State baseball and UNC men’s basketball.</p>
+</section>
+<section id="feature-engineering" class="level2">
+<h2>Feature Engineering</h2>
+<p>Feature engineering focused on building variables that reflected information available at different forecasting horizons while avoiding data leakage.</p>
+<p>Feature groups included:</p>
+<ul>
+<li>Schedule and game context</li>
+<li>Opponent characteristics</li>
+<li>Attendance history</li>
+<li>Academic calendar timing</li>
+<li>Fan interest signals</li>
+<li>UNC and opponent performance</li>
+<li>Weather and near-term forecast variables</li>
+<li>Promotions</li>
+<li>Geographic and travel-related context</li>
+</ul>
+<p>Because different data sources began in different seasons, the project used a tiered dataset structure. Lower tiers preserved longer historical windows with fewer features, while higher tiers added richer contextual data but had shorter training histories.</p>
+</section>
+<section id="tiered-dataset-design" class="level2">
+<h2>Tiered Dataset Design</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img src="../images/unc-baseball-attendance/tiers-visualization.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:90.0%" /></p>
+</figure>
+</div>
+<p>The project used five feature tiers to evaluate the tradeoff between more historical data and richer contextual information.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th style="text-align: right;">Start Season</th>
+<th>Added Feature Groups</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tier 1</td>
+<td style="text-align: right;">2000+</td>
+<td>Schedule and attendance history</td>
+</tr>
+<tr class="even">
+<td>Tier 2</td>
+<td style="text-align: right;">2010+</td>
+<td>Google Trends</td>
+</tr>
+<tr class="odd">
+<td>Tier 3</td>
+<td style="text-align: right;">2014+</td>
+<td>Team and opponent performance</td>
+</tr>
+<tr class="even">
+<td>Tier 4</td>
+<td style="text-align: right;">2016+</td>
+<td>Academic calendar and enrollment detail</td>
+</tr>
+<tr class="odd">
+<td>Tier 5</td>
+<td style="text-align: right;">2019+</td>
+<td>Promotions</td>
+</tr>
+</tbody>
+</table>
+<p>This design allowed the team to test whether additional feature richness improved forecasts enough to justify the reduced historical sample size.</p>
+</section>
+<section id="exploratory-analysis" class="level2">
+<h2>Exploratory Analysis</h2>
+<p>Exploratory analysis showed that attendance increased substantially over time, especially in recent seasons, while still exhibiting meaningful game-to-game variation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img src="../images/unc-baseball-attendance/attendance-distribution.png" class="img-fluid quarto-figure quarto-figure-center" style="width:90.0%" /></p>
+</figure>
+</div>
+<p>The distribution of attendance also showed that the evaluation seasons came from a higher-attendance regime than much of the earlier historical data, making the forecasting task more challenging.</p>
+<section id="scheduling-effects" class="level3">
+<h3>Scheduling Effects</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img src="../images/unc-baseball-attendance/scheduling-factors.png" class="img-fluid quarto-figure quarto-figure-center" style="width:100.0%" /></p>
+</figure>
+</div>
+<p>Scheduling variables showed strong relationships with attendance. Weekend games generally outperformed weekday games, night games tended to draw stronger crowds, and postseason settings such as regionals and super regionals were associated with substantially higher attendance.</p>
+<p>Academic timing also mattered. School nights, exams, and breaks showed differences in turnout, which supported the inclusion of academic-calendar features in the modeling pipeline.</p>
+</section>
+</section>
+<section id="forecasting-horizons" class="level2">
+<h2>Forecasting Horizons</h2>
+<p>The project evaluated two operational prediction settings.</p>
+<section id="preseason-forecast" class="level3">
+<h3>Preseason Forecast</h3>
+<p>The preseason model was designed to predict the full home schedule before opening day using only information available before the season started.</p>
+<p>This setting supports:</p>
+<ul>
+<li>Seasonal staffing expectations</li>
+<li>Budget planning</li>
+<li>Concessions planning</li>
+<li>Early identification of likely high-demand games</li>
+<li>Early promotional planning</li>
+</ul>
+</section>
+<section id="two-day-ahead-update-forecast" class="level3">
+<h3>Two-Day-Ahead Update Forecast</h3>
+<p>The two-day-ahead model was designed to refine predictions shortly before each game using updated contextual information.</p>
+<p>This setting supports:</p>
+<ul>
+<li>Final staffing decisions</li>
+<li>Parking and gate planning</li>
+<li>Concessions preparation</li>
+<li>Short-term promotional adjustments</li>
+<li>Weather-informed operational decisions</li>
+</ul>
+<p>The deployed workflow was extended to support predictions up to two days before game time so the Streamlit app could surface forecasts for games close enough to have current contextual data.</p>
+</section>
+</section>
+<section id="modeling-pipeline" class="level2">
+<h2>Modeling Pipeline</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img src="../images/unc-baseball-attendance/pipeline-flow.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:95.0%" /></p>
+</figure>
+</div>
+<p>The modeling workflow used chronological validation rather than random splits. This better reflected the real forecasting problem because future games must be predicted using only past information.</p>
+<p>The project evaluated five model families:</p>
+<ul>
+<li>Linear Regression</li>
+<li>Elastic Net</li>
+<li>Random Forest</li>
+<li>XGBoost</li>
+<li>LightGBM</li>
+</ul>
+<p>The modeling process included:</p>
+<ul>
+<li>Weighted rolling cross-validation</li>
+<li>Seasonal decay weighting to prioritize recent seasons</li>
+<li>Hyperparameter tuning with Optuna</li>
+<li>Backward feature elimination</li>
+<li>Re-optimization on reduced feature sets</li>
+<li>Final rolling predictions for 2024, 2025, and forward-looking 2026 games</li>
+</ul>
+<p>Seasons 2020 and 2021 were excluded because attendance was artificially constrained during the COVID era, and 2008 was excluded because Boshamer Stadium was under reconstruction.</p>
+</section>
+<section id="model-results" class="level2">
+<h2>Model Results</h2>
+<p>The best model differed by forecast horizon.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Forecast Context</th>
+<th style="text-align: right;">Best Tier</th>
+<th>Model</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">MAE</th>
+<th style="text-align: right;">R²</th>
+<th style="text-align: right;">MAPE</th>
+<th style="text-align: right;">Within 500</th>
+<th style="text-align: right;">vs. Baseline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Preseason</td>
+<td style="text-align: right;">Tier 4</td>
+<td>Elastic Net</td>
+<td style="text-align: right;">406</td>
+<td style="text-align: right;">330</td>
+<td style="text-align: right;">0.6128</td>
+<td style="text-align: right;">11.6%</td>
+<td style="text-align: right;">82%</td>
+<td style="text-align: right;">+38.8%</td>
+</tr>
+<tr class="even">
+<td>Two-Day-Ahead</td>
+<td style="text-align: right;">Tier 5</td>
+<td>Elastic Net</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">0.8048</td>
+<td style="text-align: right;">9.1%</td>
+<td style="text-align: right;">88%</td>
+<td style="text-align: right;">+48.0%</td>
+</tr>
+</tbody>
+</table>
+<p>The two-day-ahead model improved RMSE by 80 attendees, or about 19.7%, relative to the best preseason model. This showed the value of incorporating near-term information such as weather forecasts, current-season performance, recent attendance behavior, and in-season fan-interest signals.</p>
+</section>
+<section id="key-findings" class="level2">
+<h2>Key Findings</h2>
+<p>Several findings stood out:</p>
+<ul>
+<li>Elastic Net was the best-performing model family across the winning forecast settings.</li>
+<li>The best preseason model came from Tier 4, where richer contextual features improved forecasts without sacrificing too much historical depth.</li>
+<li>The best two-day-ahead model came from Tier 5, showing that the richest feature set was most useful close to game day.</li>
+<li>Near-term context reduced forecast error by nearly 20% compared with preseason prediction.</li>
+<li>Preseason forecasts were useful for strategic planning, while two-day-ahead forecasts were better suited for tactical operations.</li>
+<li>Attendance drivers changed depending on when the prediction was made.</li>
+</ul>
+</section>
+<section id="interpretability" class="level2">
+<h2>Interpretability</h2>
+<p>SHAP-based interpretability analysis was used to understand which feature groups influenced the winning models.</p>
+<section id="preseason-model-drivers" class="level3">
+<h3>Preseason Model Drivers</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img src="../images/unc-baseball-attendance/preseason-group-importance.png" class="img-fluid quarto-figure quarto-figure-center" style="width:90.0%" /></p>
+</figure>
+</div>
+<p>For the winning preseason Tier 4 model, the most important feature groups were attendance history and Google Trends, followed by performance and schedule. This suggests that before the season begins, the model relies heavily on historical demand, preseason public attention, and prior-season team context.</p>
+</section>
+<section id="two-day-ahead-model-drivers" class="level3">
+<h3>Two-Day-Ahead Model Drivers</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img src="../images/unc-baseball-attendance/update-group-importance.png" class="img-fluid quarto-figure quarto-figure-center" style="width:90.0%" /></p>
+</figure>
+</div>
+<p>For the winning two-day-ahead Tier 5 model, schedule was the strongest feature group by a large margin, followed by weather, academics, opponent context, and performance. This reflects the importance of near-term operational context when the prediction is made close to game day.</p>
+</section>
+</section>
+<section id="streamlit-application" class="level2">
+<h2>Streamlit Application</h2>
+<p>The project includes a deployed Streamlit application that allows users to explore UNC baseball attendance forecasts in a simple decision-support format.</p>
+<p><a href="https://unc-baseball-attendance-forecasting.streamlit.app/">View Streamlit App</a><br />
+<a href="https://github.com/djfulk-22/Personal-S26-TeamA3-App-Repo-">View Public App Repository</a></p>
+<p>The app supports both preseason and midseason forecasting views. Users can:</p>
+<ul>
+<li>Choose a season</li>
+<li>Switch between preseason and midseason predictions</li>
+<li>Filter by month</li>
+<li>Review season-level summary metrics</li>
+<li>View predicted attendance on a calendar-style schedule</li>
+<li>Inspect individual games in detail</li>
+<li>Explore filtered prediction data in table form</li>
+<li>Compare actual and predicted attendance when actuals are available</li>
+</ul>
+<p>The app is intended to support both strategic planning and short-term operational decision-making. Preseason predictions provide a full-schedule planning view before opening day, while midseason predictions incorporate updated information for games closer to being played.</p>
+</section>
+<section id="automated-refresh-and-deployment-workflow" class="level2">
+<h2>Automated Refresh and Deployment Workflow</h2>
+<p>The project also included a local-to-cloud refresh pipeline that keeps the deployed app updated as new data becomes available.</p>
+<p>The refresh workflow:</p>
+<ol type="1">
+<li>Scrapes and refreshes the latest UNC baseball schedule and attendance data</li>
+<li>Builds updated game-level performance features</li>
+<li>Runs the scoring notebook to generate prediction files</li>
+<li>Writes updated CSVs into <code>APP/data</code></li>
+<li>Performs sanity checks on the expected app outputs</li>
+<li>Pushes updated app-facing files to GitHub only when the files have changed</li>
+</ol>
+<p>The automation runs locally on a Mac using <code>launchd</code>, a shell script, and a Python refresh orchestrator. The deployed Streamlit app then reads the updated committed files from the repository.</p>
+<p>This workflow allowed the app to function as a live forecasting tool rather than a static class project.</p>
+</section>
+<section id="generalization-testing" class="level2">
+<h2>Generalization Testing</h2>
+<p>The team also tested whether the modeling framework could generalize beyond UNC baseball. The UNC baseball model configurations were applied directly to:</p>
+<ul>
+<li>NC State baseball</li>
+<li>UNC men’s basketball</li>
+</ul>
+<p>The transfer tests showed that the core modeling recipe could beat baseline in multiple contexts. However, the importance of specific feature groups varied by sport and venue.</p>
+<p>For example, attendance history mattered more for baseball, where game-to-game attendance varies substantially. Schedule timing mattered more for basketball, where attendance is closer to capacity and there is less variation to predict.</p>
+</section>
+<section id="actionable-insights" class="level2">
+<h2>Actionable Insights</h2>
+<p>The final project produced several practical recommendations for UNC Athletics:</p>
+<ul>
+<li>Use preseason forecasts for big-picture planning before opening day</li>
+<li>Use two-day-ahead forecasts for final staffing, concessions, parking, and promotional decisions</li>
+<li>Adjust short-term expectations when weather conditions change</li>
+<li>Treat historical demand as a strong baseline, but refine it with near-term context</li>
+<li>Use fan-interest signals to identify games that may draw more attention than schedule context alone suggests</li>
+<li>Evaluate feature importance separately before transferring the framework to another sport</li>
+</ul>
+</section>
+<section id="technical-highlights" class="level2">
+<h2>Technical Highlights</h2>
+<ul>
+<li>Built an end-to-end attendance forecasting framework for UNC baseball</li>
+<li>Integrated scraped attendance data with NCAA performance metrics and contextual datasets</li>
+<li>Engineered forecast-safe features for preseason and short-term prediction settings</li>
+<li>Evaluated multiple model families across tiered feature sets</li>
+<li>Used weighted rolling cross-validation to reflect real forecasting conditions</li>
+<li>Applied backward feature elimination and model re-optimization</li>
+<li>Built a stakeholder-facing Streamlit application</li>
+<li>Created an automated local refresh pipeline for app-facing prediction files</li>
+<li>Tested transferability to NC State baseball and UNC men’s basketball</li>
+</ul>
+</section>
+<section id="tools-used" class="level2">
+<h2>Tools Used</h2>
+<p>Python, pandas, scikit-learn, XGBoost, LightGBM, Optuna, SHAP, Streamlit, Selenium, Jupyter Notebook, GitHub, Open-Meteo, Google Trends, GoHeels.com data, and NCAA stats data.</p>
+</section>
+<section id="skills-demonstrated" class="level2">
+<h2>Skills Demonstrated</h2>
+<ul>
+<li>Sports analytics</li>
+<li>Predictive modeling</li>
+<li>Data scraping</li>
+<li>Data engineering</li>
+<li>Feature engineering</li>
+<li>Time-aware validation</li>
+<li>Model evaluation</li>
+<li>Streamlit application development</li>
+<li>Dashboard design</li>
+<li>Automation workflow design</li>
+<li>Stakeholder communication</li>
+<li>Technical documentation</li>
+<li>Collaborative data science development</li>
+</ul>
+</section>
+<section id="limitations" class="level2">
+<h2>Limitations</h2>
+<p>Several limitations should be considered:</p>
+<ul>
+<li>Different feature groups had uneven historical coverage, which created tradeoffs between richer features and longer training windows.</li>
+<li>COVID-era attendance restrictions and Boshamer Stadium reconstruction required excluding some seasons.</li>
+<li>Promotion data was only available in more recent seasons.</li>
+<li>Short-horizon forecasts depend on updated data such as weather, recent attendance, and current-season team performance.</li>
+<li>Some external demand factors, such as ticket presales, local events, and media attention, were not available.</li>
+<li>SHAP analysis is useful for model interpretation but should not be interpreted as proving causal relationships.</li>
+</ul>
+</section>
+<section id="future-work" class="level2">
+<h2>Future Work</h2>
+<p>Future extensions could include:</p>
+<ul>
+<li>Annual model retraining after each completed season</li>
+<li>Integration of ticket presales or scan data</li>
+<li>A mid-range forecast horizon for one to two weeks ahead</li>
+<li>Expansion to additional UNC sports</li>
+<li>More detailed promotion-effect modeling</li>
+<li>Richer campus and local-event context</li>
+<li>Prediction intervals or uncertainty bands in the app</li>
+<li>More systematic transfer testing across sports and venues</li>
+<li>Operational what-if scenario analysis in the Streamlit app</li>
+</ul>
+</section>
+<section id="repository" class="level2">
+<h2>Repository</h2>
+<p>The public app repository contains the deployed Streamlit application and app-facing files used to serve the forecasting dashboard.</p>
+<p><a href="https://github.com/djfulk-22/Personal-S26-TeamA3-App-Repo-">View Public App Repository</a></p>
+<p>The full capstone repository contains the complete scraping code, modeling notebooks, prediction files, automation scripts, documentation, and project deliverables.</p>
+<p>Full project analysis repository link will be added once the complete capstone repository is publicly available.</p>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Daniel Fulk</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Daniel Fulk</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6SG9tZQ==">Home</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw=">/index.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6UHJvamVjdHM=">Projects</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3Byb2plY3RzLmh0bWw=">/projects.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6UmVzdW1l">Resume</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3Jlc3VtZS5odG1s">/resume.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QWJvdXQ=">About</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2Fib3V0Lmh0bWw=">/about.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6Q29udGFjdA==">Contact</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2NvbnRhY3QuaHRtbA==">/contact.html</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">UNC Baseball Attendance Prediction – Daniel Fulk</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">UNC Baseball Attendance Prediction – Daniel Fulk</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">UNC Baseball Attendance Prediction – Daniel Fulk</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Daniel Fulk</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+</body>
+
+</html>

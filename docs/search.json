@@ -1,5 +1,446 @@
 [
   {
+    "objectID": "projects/unc-baseball-attendance.html",
+    "href": "projects/unc-baseball-attendance.html",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "",
+    "text": "UNC Baseball Attendance Prediction is a collaborative MADS capstone project with Adam Cooke and Arvind Madan for UNC Athletics. The project built an end-to-end attendance forecasting framework and Streamlit decision-support application for UNC baseball home games using historical attendance, opponent context, scheduling features, weather, academic calendar timing, Google Trends, promotions, and team performance data.\nThe project was designed to help UNC Athletics move from attendance planning based mostly on historical averages and scheduling intuition toward a more proactive, data-informed workflow for staffing, marketing, concessions, promotions, and game-day operations.\nView Streamlit App\nView Public App Repository\nFull project analysis repository link will be added once the complete capstone repository is publicly available."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#project-summary",
+    "href": "projects/unc-baseball-attendance.html#project-summary",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "",
+    "text": "UNC Baseball Attendance Prediction is a collaborative MADS capstone project with Adam Cooke and Arvind Madan for UNC Athletics. The project built an end-to-end attendance forecasting framework and Streamlit decision-support application for UNC baseball home games using historical attendance, opponent context, scheduling features, weather, academic calendar timing, Google Trends, promotions, and team performance data.\nThe project was designed to help UNC Athletics move from attendance planning based mostly on historical averages and scheduling intuition toward a more proactive, data-informed workflow for staffing, marketing, concessions, promotions, and game-day operations.\nView Streamlit App\nView Public App Repository\nFull project analysis repository link will be added once the complete capstone repository is publicly available."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#stakeholder-context",
+    "href": "projects/unc-baseball-attendance.html#stakeholder-context",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Stakeholder Context",
+    "text": "Stakeholder Context\nUNC Athletics hosts home events across many teams, and attendance affects operational planning, staffing, marketing effectiveness, resource allocation, and fan experience. For UNC baseball, game-day turnout can vary substantially depending on opponent, schedule timing, weather, promotions, team performance, academic calendar context, and broader fan interest.\nThe goal of this project was to build a forecasting framework that could generate useful game-level attendance projections and present those forecasts in a way that non-technical stakeholders could use for planning decisions."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#team-and-contributions",
+    "href": "projects/unc-baseball-attendance.html#team-and-contributions",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Team and Contributions",
+    "text": "Team and Contributions\nThis was a collaborative project with Adam Cooke and Arvind Madan.\n\nMy Role\nMy primary responsibilities focused on performance-data scraping, Streamlit development, and documentation.\nMy contributions included:\n\nBuilt the performance-data scraper for UNC and opponent game-level metrics\nEngineered and integrated performance variables such as scoring, home runs, strikeouts, win percentage, and team-strength indicators\nDeveloped the Streamlit application used to present preseason and midseason forecasts interactively\nRefined the app layout, calendar view, game-detail view, data explorer, and stakeholder-facing display logic\nContributed to project documentation and the final project writeup\nContinuously refined both the scraper and app as project needs evolved\n\n\n\nPartner Contributions\nAdam Cooke led the GoHeels.com attendance scraper, project infrastructure, feature-tier setup, supporting datasets, GitHub organization, and stakeholder coordination.\nArvind Madan led data cleaning, feature engineering, master dataset integration, backward feature elimination, weighted cross-validation, preseason workflow adaptation, and additional weather- and attendance-related feature engineering.\nAll team members contributed to the final presentation and broader project development."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#project-objectives",
+    "href": "projects/unc-baseball-attendance.html#project-objectives",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Project Objectives",
+    "text": "Project Objectives\nThe project had four primary objectives:\n\nIdentify key drivers of attendance for UNC baseball home games\nBuild predictive models to forecast game-day attendance at the event level\nCreate interpretable dashboards that make projections accessible to non-technical stakeholders\nDeliver actionable insights for staffing, promotions, marketing, and operations planning\n\nAlthough the project focused on UNC baseball, the methodology was designed to be scalable to other sports, venues, and institutions."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#data-sources",
+    "href": "projects/unc-baseball-attendance.html#data-sources",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Data Sources",
+    "text": "Data Sources\nThe modeling dataset combined multiple source files into a unified game-level dataset for UNC baseball.\nMajor data sources included:\n\nUNC baseball attendance and schedule data scraped from GoHeels.com\nUNC and opponent game-level performance data from NCAA stats game logs\nAcademic calendar data from UNC Registrar archives\nEnrollment data\nGoogle Trends web search interest\nGoogle Trends YouTube search interest\nTeam home coordinates and travel-related context\nACC and opponent-group mappings\nPromotion and event-context data\n\nAdditional datasets were also assembled for generalization testing on NC State baseball and UNC men’s basketball."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#feature-engineering",
+    "href": "projects/unc-baseball-attendance.html#feature-engineering",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Feature Engineering",
+    "text": "Feature Engineering\nFeature engineering focused on building variables that reflected information available at different forecasting horizons while avoiding data leakage.\nFeature groups included:\n\nSchedule and game context\nOpponent characteristics\nAttendance history\nAcademic calendar timing\nFan interest signals\nUNC and opponent performance\nWeather and near-term forecast variables\nPromotions\nGeographic and travel-related context\n\nBecause different data sources began in different seasons, the project used a tiered dataset structure. Lower tiers preserved longer historical windows with fewer features, while higher tiers added richer contextual data but had shorter training histories."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#tiered-dataset-design",
+    "href": "projects/unc-baseball-attendance.html#tiered-dataset-design",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Tiered Dataset Design",
+    "text": "Tiered Dataset Design\n\n\n\n\n\nThe project used five feature tiers to evaluate the tradeoff between more historical data and richer contextual information.\n\n\n\nTier\nStart Season\nAdded Feature Groups\n\n\n\n\nTier 1\n2000+\nSchedule and attendance history\n\n\nTier 2\n2010+\nGoogle Trends\n\n\nTier 3\n2014+\nTeam and opponent performance\n\n\nTier 4\n2016+\nAcademic calendar and enrollment detail\n\n\nTier 5\n2019+\nPromotions\n\n\n\nThis design allowed the team to test whether additional feature richness improved forecasts enough to justify the reduced historical sample size."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#exploratory-analysis",
+    "href": "projects/unc-baseball-attendance.html#exploratory-analysis",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Exploratory Analysis",
+    "text": "Exploratory Analysis\nExploratory analysis showed that attendance increased substantially over time, especially in recent seasons, while still exhibiting meaningful game-to-game variation.\n\n\n\n\n\nThe distribution of attendance also showed that the evaluation seasons came from a higher-attendance regime than much of the earlier historical data, making the forecasting task more challenging.\n\nScheduling Effects\n\n\n\n\n\nScheduling variables showed strong relationships with attendance. Weekend games generally outperformed weekday games, night games tended to draw stronger crowds, and postseason settings such as regionals and super regionals were associated with substantially higher attendance.\nAcademic timing also mattered. School nights, exams, and breaks showed differences in turnout, which supported the inclusion of academic-calendar features in the modeling pipeline."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#forecasting-horizons",
+    "href": "projects/unc-baseball-attendance.html#forecasting-horizons",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Forecasting Horizons",
+    "text": "Forecasting Horizons\nThe project evaluated two operational prediction settings.\n\nPreseason Forecast\nThe preseason model was designed to predict the full home schedule before opening day using only information available before the season started.\nThis setting supports:\n\nSeasonal staffing expectations\nBudget planning\nConcessions planning\nEarly identification of likely high-demand games\nEarly promotional planning\n\n\n\nTwo-Day-Ahead Update Forecast\nThe two-day-ahead model was designed to refine predictions shortly before each game using updated contextual information.\nThis setting supports:\n\nFinal staffing decisions\nParking and gate planning\nConcessions preparation\nShort-term promotional adjustments\nWeather-informed operational decisions\n\nThe deployed workflow was extended to support predictions up to two days before game time so the Streamlit app could surface forecasts for games close enough to have current contextual data."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#modeling-pipeline",
+    "href": "projects/unc-baseball-attendance.html#modeling-pipeline",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Modeling Pipeline",
+    "text": "Modeling Pipeline\n\n\n\n\n\nThe modeling workflow used chronological validation rather than random splits. This better reflected the real forecasting problem because future games must be predicted using only past information.\nThe project evaluated five model families:\n\nLinear Regression\nElastic Net\nRandom Forest\nXGBoost\nLightGBM\n\nThe modeling process included:\n\nWeighted rolling cross-validation\nSeasonal decay weighting to prioritize recent seasons\nHyperparameter tuning with Optuna\nBackward feature elimination\nRe-optimization on reduced feature sets\nFinal rolling predictions for 2024, 2025, and forward-looking 2026 games\n\nSeasons 2020 and 2021 were excluded because attendance was artificially constrained during the COVID era, and 2008 was excluded because Boshamer Stadium was under reconstruction."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#model-results",
+    "href": "projects/unc-baseball-attendance.html#model-results",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Model Results",
+    "text": "Model Results\nThe best model differed by forecast horizon.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nForecast Context\nBest Tier\nModel\nRMSE\nMAE\nR²\nMAPE\nWithin 500\nvs. Baseline\n\n\n\n\nPreseason\nTier 4\nElastic Net\n406\n330\n0.6128\n11.6%\n82%\n+38.8%\n\n\nTwo-Day-Ahead\nTier 5\nElastic Net\n326\n260\n0.8048\n9.1%\n88%\n+48.0%\n\n\n\nThe two-day-ahead model improved RMSE by 80 attendees, or about 19.7%, relative to the best preseason model. This showed the value of incorporating near-term information such as weather forecasts, current-season performance, recent attendance behavior, and in-season fan-interest signals."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#key-findings",
+    "href": "projects/unc-baseball-attendance.html#key-findings",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Key Findings",
+    "text": "Key Findings\nSeveral findings stood out:\n\nElastic Net was the best-performing model family across the winning forecast settings.\nThe best preseason model came from Tier 4, where richer contextual features improved forecasts without sacrificing too much historical depth.\nThe best two-day-ahead model came from Tier 5, showing that the richest feature set was most useful close to game day.\nNear-term context reduced forecast error by nearly 20% compared with preseason prediction.\nPreseason forecasts were useful for strategic planning, while two-day-ahead forecasts were better suited for tactical operations.\nAttendance drivers changed depending on when the prediction was made."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#interpretability",
+    "href": "projects/unc-baseball-attendance.html#interpretability",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Interpretability",
+    "text": "Interpretability\nSHAP-based interpretability analysis was used to understand which feature groups influenced the winning models.\n\nPreseason Model Drivers\n\n\n\n\n\nFor the winning preseason Tier 4 model, the most important feature groups were attendance history and Google Trends, followed by performance and schedule. This suggests that before the season begins, the model relies heavily on historical demand, preseason public attention, and prior-season team context.\n\n\nTwo-Day-Ahead Model Drivers\n\n\n\n\n\nFor the winning two-day-ahead Tier 5 model, schedule was the strongest feature group by a large margin, followed by weather, academics, opponent context, and performance. This reflects the importance of near-term operational context when the prediction is made close to game day."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#streamlit-application",
+    "href": "projects/unc-baseball-attendance.html#streamlit-application",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Streamlit Application",
+    "text": "Streamlit Application\nThe project includes a deployed Streamlit application that allows users to explore UNC baseball attendance forecasts in a simple decision-support format.\nView Streamlit App\nView Public App Repository\nThe app supports both preseason and midseason forecasting views. Users can:\n\nChoose a season\nSwitch between preseason and midseason predictions\nFilter by month\nReview season-level summary metrics\nView predicted attendance on a calendar-style schedule\nInspect individual games in detail\nExplore filtered prediction data in table form\nCompare actual and predicted attendance when actuals are available\n\nThe app is intended to support both strategic planning and short-term operational decision-making. Preseason predictions provide a full-schedule planning view before opening day, while midseason predictions incorporate updated information for games closer to being played."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#automated-refresh-and-deployment-workflow",
+    "href": "projects/unc-baseball-attendance.html#automated-refresh-and-deployment-workflow",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Automated Refresh and Deployment Workflow",
+    "text": "Automated Refresh and Deployment Workflow\nThe project also included a local-to-cloud refresh pipeline that keeps the deployed app updated as new data becomes available.\nThe refresh workflow:\n\nScrapes and refreshes the latest UNC baseball schedule and attendance data\nBuilds updated game-level performance features\nRuns the scoring notebook to generate prediction files\nWrites updated CSVs into APP/data\nPerforms sanity checks on the expected app outputs\nPushes updated app-facing files to GitHub only when the files have changed\n\nThe automation runs locally on a Mac using launchd, a shell script, and a Python refresh orchestrator. The deployed Streamlit app then reads the updated committed files from the repository.\nThis workflow allowed the app to function as a live forecasting tool rather than a static class project."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#generalization-testing",
+    "href": "projects/unc-baseball-attendance.html#generalization-testing",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Generalization Testing",
+    "text": "Generalization Testing\nThe team also tested whether the modeling framework could generalize beyond UNC baseball. The UNC baseball model configurations were applied directly to:\n\nNC State baseball\nUNC men’s basketball\n\nThe transfer tests showed that the core modeling recipe could beat baseline in multiple contexts. However, the importance of specific feature groups varied by sport and venue.\nFor example, attendance history mattered more for baseball, where game-to-game attendance varies substantially. Schedule timing mattered more for basketball, where attendance is closer to capacity and there is less variation to predict."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#actionable-insights",
+    "href": "projects/unc-baseball-attendance.html#actionable-insights",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Actionable Insights",
+    "text": "Actionable Insights\nThe final project produced several practical recommendations for UNC Athletics:\n\nUse preseason forecasts for big-picture planning before opening day\nUse two-day-ahead forecasts for final staffing, concessions, parking, and promotional decisions\nAdjust short-term expectations when weather conditions change\nTreat historical demand as a strong baseline, but refine it with near-term context\nUse fan-interest signals to identify games that may draw more attention than schedule context alone suggests\nEvaluate feature importance separately before transferring the framework to another sport"
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#technical-highlights",
+    "href": "projects/unc-baseball-attendance.html#technical-highlights",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Technical Highlights",
+    "text": "Technical Highlights\n\nBuilt an end-to-end attendance forecasting framework for UNC baseball\nIntegrated scraped attendance data with NCAA performance metrics and contextual datasets\nEngineered forecast-safe features for preseason and short-term prediction settings\nEvaluated multiple model families across tiered feature sets\nUsed weighted rolling cross-validation to reflect real forecasting conditions\nApplied backward feature elimination and model re-optimization\nBuilt a stakeholder-facing Streamlit application\nCreated an automated local refresh pipeline for app-facing prediction files\nTested transferability to NC State baseball and UNC men’s basketball"
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#tools-used",
+    "href": "projects/unc-baseball-attendance.html#tools-used",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Tools Used",
+    "text": "Tools Used\nPython, pandas, scikit-learn, XGBoost, LightGBM, Optuna, SHAP, Streamlit, Selenium, Jupyter Notebook, GitHub, Open-Meteo, Google Trends, GoHeels.com data, and NCAA stats data."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#skills-demonstrated",
+    "href": "projects/unc-baseball-attendance.html#skills-demonstrated",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Skills Demonstrated",
+    "text": "Skills Demonstrated\n\nSports analytics\nPredictive modeling\nData scraping\nData engineering\nFeature engineering\nTime-aware validation\nModel evaluation\nStreamlit application development\nDashboard design\nAutomation workflow design\nStakeholder communication\nTechnical documentation\nCollaborative data science development"
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#limitations",
+    "href": "projects/unc-baseball-attendance.html#limitations",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Limitations",
+    "text": "Limitations\nSeveral limitations should be considered:\n\nDifferent feature groups had uneven historical coverage, which created tradeoffs between richer features and longer training windows.\nCOVID-era attendance restrictions and Boshamer Stadium reconstruction required excluding some seasons.\nPromotion data was only available in more recent seasons.\nShort-horizon forecasts depend on updated data such as weather, recent attendance, and current-season team performance.\nSome external demand factors, such as ticket presales, local events, and media attention, were not available.\nSHAP analysis is useful for model interpretation but should not be interpreted as proving causal relationships."
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#future-work",
+    "href": "projects/unc-baseball-attendance.html#future-work",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Future Work",
+    "text": "Future Work\nFuture extensions could include:\n\nAnnual model retraining after each completed season\nIntegration of ticket presales or scan data\nA mid-range forecast horizon for one to two weeks ahead\nExpansion to additional UNC sports\nMore detailed promotion-effect modeling\nRicher campus and local-event context\nPrediction intervals or uncertainty bands in the app\nMore systematic transfer testing across sports and venues\nOperational what-if scenario analysis in the Streamlit app"
+  },
+  {
+    "objectID": "projects/unc-baseball-attendance.html#repository",
+    "href": "projects/unc-baseball-attendance.html#repository",
+    "title": "UNC Baseball Attendance Prediction",
+    "section": "Repository",
+    "text": "Repository\nThe public app repository contains the deployed Streamlit application and app-facing files used to serve the forecasting dashboard.\nView Public App Repository\nThe full capstone repository contains the complete scraping code, modeling notebooks, prediction files, automation scripts, documentation, and project deliverables.\nFull project analysis repository link will be added once the complete capstone repository is publicly available."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html",
+    "href": "projects/courtspace-3d.html",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "",
+    "text": "CourtSpace 3D is an interactive Streamlit application for exploring NBA player shot patterns through a 3D half-court visualization. The app allows users to select a player, season range, and shot context, then view each shot as a 3D trajectory over a realistic NBA half court.\nThe project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the nba_api package.\nView Live App\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#project-summary",
+    "href": "projects/courtspace-3d.html#project-summary",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "",
+    "text": "CourtSpace 3D is an interactive Streamlit application for exploring NBA player shot patterns through a 3D half-court visualization. The app allows users to select a player, season range, and shot context, then view each shot as a 3D trajectory over a realistic NBA half court.\nThe project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the nba_api package.\nView Live App\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#project-motivation",
+    "href": "projects/courtspace-3d.html#project-motivation",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Project Motivation",
+    "text": "Project Motivation\nTraditional NBA shot charts are usually shown as flat 2D visuals. While useful, those charts can make it difficult to quickly understand shot trajectory, spatial patterns, and player efficiency in a more intuitive way.\nCourtSpace 3D was designed to make shot chart data more interactive and visually engaging. Instead of only showing where a shot was taken, the app renders each attempt as a 3D arc from the shot location to the basket. Users can then filter the visualization by player, season, shot type, opponent, venue, quarter, distance, and make/miss result."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#my-role",
+    "href": "projects/courtspace-3d.html#my-role",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "My Role",
+    "text": "My Role\nThis was a collaborative project with Arvind Madan.\nMy primary contributions focused on building the foundation of the visualization tool:\n\nCreated the first working prototype using a static LeBron James shot dataset\nImplemented the initial Streamlit version of the app\nBuilt the core visualization pipeline for rendering player shot attempts as 3D trajectories\nAdded hover text metadata for shot-level context\nAdded quarter filtering\nBuilt the full hot/cold zone heatmap mode\nAdded the user-controlled heatmap scaling slider\nDesigned the caching system used to handle NBA API requests efficiently"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#partner-contributions",
+    "href": "projects/courtspace-3d.html#partner-contributions",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Partner Contributions",
+    "text": "Partner Contributions\nArvind Madan expanded the app with advanced filters and user interface improvements, including:\n\nMax-shots slider\nMakes/misses filter\nHome/away venue filter\nShot distance filter\nShot type filter\nOpponent filter\nAutomatically updating player and team images\nMulti-season query functionality\n\nTogether, these contributions produced an interactive app that combines NBA shot chart data, 3D rendering, contextual filtering, and league-relative efficiency analysis."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#app-preview",
+    "href": "projects/courtspace-3d.html#app-preview",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "App Preview",
+    "text": "App Preview"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#key-features",
+    "href": "projects/courtspace-3d.html#key-features",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Key Features",
+    "text": "Key Features\n\nInteractive 3D Shot Arcs\nEach shot is rendered as a 3D trajectory from its court location to the rim. Makes and misses can be colored differently, allowing users to quickly identify successful and unsuccessful shot attempts.\n\n\nRealistic NBA Half-Court Geometry\nThe app builds a realistic half-court scene with a floor, paint, free throw line, restricted area, three-point line, rim, and backboard. The court geometry is defined in feet to match NBA-style dimensions.\n\n\nPlayer and Season Selection\nUsers can select an NBA player and choose either a single season or a multi-season range. The app supports both regular season and playoff data.\n\n\nContextual Shot Filters\nThe app allows users to filter shots by:\n\nMakes and misses\nHome or away games\nQuarter and overtime\nShot distance\nShot type\nOpponent\nMaximum number of shots displayed\n\n\n\nShot Profile Summary Metrics\nFor the selected view, the app reports summary metrics such as:\n\nTotal shots\nField goal percentage\nAverage shot distance\n\n\n\nHot/Cold Zone Heatmap\nThe hot/cold zone heatmap compares a player’s field goal percentage by court region against league average. This helps identify where a player shoots better or worse than the league from specific areas of the floor.\nThe heatmap is calculated as:\nPlayer FG% - League FG%\nPositive values indicate areas where the player shoots above league average, while negative values indicate areas where the player shoots below league average."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#how-the-app-works",
+    "href": "projects/courtspace-3d.html#how-the-app-works",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "How the App Works",
+    "text": "How the App Works\nThe app uses nba_api to retrieve player shot chart data from NBA Stats. After the user selects a player and season range, the app loads player shot attempts and league-average zone data.\nThe visualization pipeline then:\n\nLoads player and league shot data\nAdds venue and opponent information\nApplies user-selected filters\nConverts NBA shot coordinates into court coordinates\nBuilds a 3D half-court using Plotly\nRenders shot attempts as 3D arcs\nOptionally overlays the league-relative hot/cold zone heatmap"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#technical-highlights",
+    "href": "projects/courtspace-3d.html#technical-highlights",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Technical Highlights",
+    "text": "Technical Highlights\n\nBuilt a modular Streamlit app with separate source files for data loading, filtering, court geometry, shot arcs, heatmap logic, zone classification, and 3D rendering\nUsed cached NBA API calls to reduce unnecessary requests and improve app performance\nConverted NBA shot chart coordinates into a custom 3D court coordinate system\nRendered shot attempts as quadratic Bezier arcs from shot location to the rim\nCompared player shooting efficiency to league-average zone performance\nAdded performance controls to limit the number of rendered shots for smoother interaction"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#tools-used",
+    "href": "projects/courtspace-3d.html#tools-used",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Tools Used",
+    "text": "Tools Used\nPython, Streamlit, Plotly, pandas, NumPy, nba_api, GitHub, and Streamlit Community Cloud."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#skills-demonstrated",
+    "href": "projects/courtspace-3d.html#skills-demonstrated",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Skills Demonstrated",
+    "text": "Skills Demonstrated\n\nSports analytics\nInteractive dashboard development\nData visualization\nAPI-based data collection\nSpatial data processing\nFeature filtering and user interface design\n3D visualization with Plotly\nStreamlit app deployment\nCollaborative project development"
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#known-limitations",
+    "href": "projects/courtspace-3d.html#known-limitations",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Known Limitations",
+    "text": "Known Limitations\nThe app depends on NBA Stats data through nba_api, so load times and availability can depend on the NBA Stats endpoint. Older seasons may also contain less consistent shot-tracking data because of historical differences in NBA data collection.\nRendering thousands of 3D arcs can also be computationally heavy, so the app includes a maximum shot display slider and sampling logic to improve performance."
+  },
+  {
+    "objectID": "projects/courtspace-3d.html#repository",
+    "href": "projects/courtspace-3d.html#repository",
+    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
+    "section": "Repository",
+    "text": "Repository\nThe full project repository contains the Streamlit app, helper modules, requirements file, and documentation.\nView Live App\nView GitHub Repository"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Email: danielfulk317@gmail.com\nLinkedIn: LinkedIn Profile\nGitHub: GitHub Profile"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am a recent Master’s in Applied Data Science graduate from UNC Chapel Hill with interests in sports analytics, predictive modeling, data visualization, and applied machine learning.\nMy path into data science was not completely linear. I originally entered college as a chemistry major with the goal of eventually becoming an orthodontist. After my freshman year, I realized that while I respected the field, it was not the area I felt genuinely motivated to build my future around.\nThat realization led me to change direction and pursue a Bachelor of Science in Economics. Economics felt like a much better fit because it gave me a way to think analytically about real-world behavior, decision-making, incentives, and measurable outcomes. As I moved further into the major, I became increasingly interested in using data to answer practical questions and communicate evidence-based insights.\nThrough that experience, I discovered UNC Chapel Hill’s data science minor, which gave me my first structured exposure to programming, statistical analysis, and applied data work. That minor ultimately became the bridge between my economics background and my decision to continue into UNC’s Master of Applied Data Science program.\nSince then, my project work has focused heavily on using data science methods to analyze sports performance, forecast outcomes, and communicate insights through reproducible analysis and interactive tools. I am especially interested in projects that combine technical modeling with clear decision-making value, whether through predictive analytics, dashboards, or data-driven storytelling."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Daniel Fulk",
+    "section": "",
+    "text": "I recently completed my Master’s in Applied Data Science (MADS) from UNC Chapel Hill. The program focused on the full data life cycle, including databases, data engineering, predictive modeling, applied machine learning, and deep learning. Throughout my assignments and projects, I primarily focused on sports analytics, using data science methods to analyze team performance, player trends, predictive outcomes, and decision-making in sports contexts."
+  },
+  {
+    "objectID": "index.html#portfolio-projects",
+    "href": "index.html#portfolio-projects",
+    "title": "Daniel Fulk",
+    "section": "Portfolio Projects",
+    "text": "Portfolio Projects\nMy portfolio includes data science and sports analytics projects involving predictive modeling, machine learning, data visualization, interactive applications, and data-driven case studies.\nView All Projects"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Collaborative MADS capstone project with Adam Cooke and Arvind Madan for UNC Athletics. Built an end-to-end attendance forecasting framework and Streamlit decision-support application for UNC baseball home games using historical attendance, opponent context, scheduling features, weather, academic calendar timing, Google Trends, promotions, and team performance data.\nMy role: Built the performance-data scraper for UNC and opponent game-level metrics, developed the Streamlit application used to present preseason and midseason forecasts interactively, contributed to project documentation, and continuously refined the scraper and app as project needs evolved.\nPartner contributions: Adam Cooke led the GoHeels.com attendance scraper, project infrastructure, feature-tier setup, supporting datasets, GitHub organization, and stakeholder coordination. Arvind Madan led data cleaning, feature engineering, master dataset integration, backward feature elimination, weighted cross-validation, preseason workflow adaptation, and additional weather- and attendance-related feature engineering.\nSkills shown: Python, pandas, scikit-learn, Optuna, SHAP, Streamlit, Selenium, data scraping, feature engineering, predictive modeling, sports analytics, dashboard development, automation, stakeholder communication\nView Project\nView Streamlit App\nGitHub repository link will be added once the repository is publicly available.\n\n\n\nCollaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.\nMy role: Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.\nSkills shown: Python, Streamlit, Plotly, nba_api, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development\nView Project\nView Live App\nView GitHub Repository\n\n\n\nCollaborative machine learning project with Arvind Madan and Elliott Walker focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.\nProject work: Developed a machine learning pipeline that cleaned and transformed pitch-level data, engineered lagged sequence features, enriched observations with pitcher and batter arsenal tendencies, and evaluated multiple modeling approaches including multinomial logistic regression, random forest, neural network, and ensemble models. The final ensemble model balanced overall accuracy with stronger class-wise performance across imbalanced pitch types.\nSkills shown: Python, pandas, scikit-learn, TensorFlow/Keras, Optuna, sports analytics, feature engineering, multiclass classification, neural networks, ensemble modeling, model evaluation\nView Project\nGitHub repository link will be added once the repository is publicly available.\n\n\n\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nBuilt this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects.html#available-projects",
+    "href": "projects.html#available-projects",
+    "title": "Projects",
+    "section": "",
+    "text": "Collaborative MADS capstone project with Adam Cooke and Arvind Madan for UNC Athletics. Built an end-to-end attendance forecasting framework and Streamlit decision-support application for UNC baseball home games using historical attendance, opponent context, scheduling features, weather, academic calendar timing, Google Trends, promotions, and team performance data.\nMy role: Built the performance-data scraper for UNC and opponent game-level metrics, developed the Streamlit application used to present preseason and midseason forecasts interactively, contributed to project documentation, and continuously refined the scraper and app as project needs evolved.\nPartner contributions: Adam Cooke led the GoHeels.com attendance scraper, project infrastructure, feature-tier setup, supporting datasets, GitHub organization, and stakeholder coordination. Arvind Madan led data cleaning, feature engineering, master dataset integration, backward feature elimination, weighted cross-validation, preseason workflow adaptation, and additional weather- and attendance-related feature engineering.\nSkills shown: Python, pandas, scikit-learn, Optuna, SHAP, Streamlit, Selenium, data scraping, feature engineering, predictive modeling, sports analytics, dashboard development, automation, stakeholder communication\nView Project\nView Streamlit App\nGitHub repository link will be added once the repository is publicly available.\n\n\n\nCollaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.\nMy role: Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.\nSkills shown: Python, Streamlit, Plotly, nba_api, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development\nView Project\nView Live App\nView GitHub Repository\n\n\n\nCollaborative machine learning project with Arvind Madan and Elliott Walker focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.\nProject work: Developed a machine learning pipeline that cleaned and transformed pitch-level data, engineered lagged sequence features, enriched observations with pitcher and batter arsenal tendencies, and evaluated multiple modeling approaches including multinomial logistic regression, random forest, neural network, and ensemble models. The final ensemble model balanced overall accuracy with stronger class-wise performance across imbalanced pitch types.\nSkills shown: Python, pandas, scikit-learn, TensorFlow/Keras, Optuna, sports analytics, feature engineering, multiclass classification, neural networks, ensemble modeling, model evaluation\nView Project\nGitHub repository link will be added once the repository is publicly available.\n\n\n\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nBuilt this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects.html#additional-projects-coming-soon",
+    "href": "projects.html#additional-projects-coming-soon",
+    "title": "Projects",
+    "section": "Additional Projects Coming Soon",
+    "text": "Additional Projects Coming Soon\n\nNBA Wearable Sensor Data Governance Case Study"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Download Resume PDF"
+  },
+  {
+    "objectID": "resume.html#contact",
+    "href": "resume.html#contact",
+    "title": "Resume",
+    "section": "Contact",
+    "text": "Contact\nEmail: danielfulk317@gmail.com Phone: (336)-972-7062"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Resume",
+    "section": "Education",
+    "text": "Education\n\nUniversity of North Carolina at Chapel Hill\nMaster of Applied Data Science (MADS)\nCompleted April 2026\nB.S. Economics, Minor in Data Science\nMay 2024\nGPA: 3.14\n\n\nHonors and Awards\n\nDean’s List"
+  },
+  {
+    "objectID": "resume.html#technical-skills",
+    "href": "resume.html#technical-skills",
+    "title": "Resume",
+    "section": "Technical Skills",
+    "text": "Technical Skills\nPython, SQL, pandas, scikit-learn, TensorFlow/Keras, Optuna, Plotly, Streamlit, GitHub, Jupyter, data cleaning, feature engineering, predictive modeling, machine learning, data visualization, sports analytics, and applied data science."
+  },
+  {
+    "objectID": "resume.html#selected-projects",
+    "href": "resume.html#selected-projects",
+    "title": "Resume",
+    "section": "Selected Projects",
+    "text": "Selected Projects\n\nNext-Pitch Prediction in Baseball\nAnalyst\nChapel Hill, NC\nMay 2025\n\nBuilt a machine learning pipeline to predict the next pitch type in MLB games using Statcast and Baseball Savant pitch-level data.\nLed a data engineering process that used streaming ingestion, lagged features, pitcher/batter-specific historical tendencies, and score-context variables to create a game-aware feature set.\nImplemented and compared logistic regression, random forest, and neural network models, tuning hyperparameters with Optuna and validating performance across MLB divisions for generalizability.\nDesigned an ensemble model that integrated neural network and tree-based predictors, improving class balance and achieving 46% accuracy.\nDelivered a research-backed sports analytics framework showing how pitch sequencing, game context, and player tendencies can be modeled to support predictive insight in baseball strategy.\n\n\n\nNBA Shot Chart Data Visualization Tool\nDeveloper\nChapel Hill, NC\nAugust 2025\n\nDeveloped an interactive 3D NBA shot analytics platform in Python using Plotly and Streamlit to visualize player shooting performance spatially and contextually.\nDesigned custom 3D half-court geometry and parabolic shot trajectories to visualize shot paths in real time based on each attempt’s position relative to the hoop.\nEngineered zone-based field goal percentage models comparing player efficiency to league averages using NBA Stats API data and dynamic binning algorithms.\nApplied spatial data processing and statistical aggregation to derive performance differentials across shot zones and shooting contexts.\nOptimized data pipelines and caching logic to support real-time analytical exploration without redundant API queries."
+  },
+  {
+    "objectID": "resume.html#work-experience-and-community-involvement",
+    "href": "resume.html#work-experience-and-community-involvement",
+    "title": "Resume",
+    "section": "Work Experience and Community Involvement",
+    "text": "Work Experience and Community Involvement\n\nJavara Research\nIntern with the Finance Team\nWinston-Salem, NC\n2023 - Current\n\nIdentified potential monthly incremental revenue from changes in how patients were screened for clinical trials based on screen-fail payment terms, with the highest month totaling up to $2,986,589.25.\nConducted patient-level data cleaning in the clinical trial management system to ensure accurate aggregate metrics for each study and precise record keeping.\nContributed to building new trials in the clinical trial management system to align with sponsor-approved protocols, helping ensure that trial data and related financial information were recorded and managed correctly.\n\n\n\nNorth Stokes High School Boys Basketball\nAssistant Varsity Basketball Coach\nDanbury, NC\nSeptember 2025 - Present\n\nTeach and simplify complex basketball concepts, translating advanced strategies into actionable skills that improve player execution and team performance.\nBridge the gap between coaching knowledge and player execution by building understanding, confidence, and consistency across varied skill levels.\nCollaborate on strategy to maximize team strengths and develop adaptable game plans that promote efficient, winning basketball."
+  },
+  {
+    "objectID": "resume.html#additional-information",
+    "href": "resume.html#additional-information",
+    "title": "Resume",
+    "section": "Additional Information",
+    "text": "Additional Information\n\nCryptocurrency Club\nBusiness Technology Club\nUNC COVID Testing Center Volunteer"
+  },
+  {
+    "objectID": "projects/three-point-effect.html",
+    "href": "projects/three-point-effect.html",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "",
+    "text": "This project explores how NBA three-point shooting relates to team success across historical seasons. The analysis focuses on whether teams that attempt more threes, make more threes, or shoot a higher three-point percentage tend to win more games.\nRather than only looking at modern basketball, the project uses year-over-year team-level data to compare teams across different NBA eras. This makes it possible to see both the long-term growth of the three-point shot and the changing relationship between perimeter shooting and winning.\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#project-summary",
+    "href": "projects/three-point-effect.html#project-summary",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "",
+    "text": "This project explores how NBA three-point shooting relates to team success across historical seasons. The analysis focuses on whether teams that attempt more threes, make more threes, or shoot a higher three-point percentage tend to win more games.\nRather than only looking at modern basketball, the project uses year-over-year team-level data to compare teams across different NBA eras. This makes it possible to see both the long-term growth of the three-point shot and the changing relationship between perimeter shooting and winning.\nView GitHub Repository"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#research-question",
+    "href": "projects/three-point-effect.html#research-question",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Research Question",
+    "text": "Research Question\nHow strongly are NBA teams’ three-point shooting statistics related to winning percentage?\nMore specifically, this project evaluates three core shooting indicators:\n\nThree-point attempts per game\nThree-point makes per game\nThree-point percentage\n\nThe goal was not just to determine whether three-point shooting matters, but to understand which three-point metrics are most closely associated with team success."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#data-and-collection-process",
+    "href": "projects/three-point-effect.html#data-and-collection-process",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Data and Collection Process",
+    "text": "Data and Collection Process\nThe dataset was collected using the nba_api Python package, specifically the TeamYearByYearStats endpoint. The data includes historical team-level statistics such as wins, losses, win percentage, three-point makes, three-point attempts, and three-point percentage.\nA major data preparation step involved standardizing historical franchise names. Because NBA teams have relocated or changed names over time, older team names such as the Charlotte Bobcats, New Orleans Hornets, Seattle SuperSonics, and New Jersey Nets had to be mapped to consistent franchise names.\nThe data collection process also accounted for NBA Stats API reliability issues by using request headers, longer timeouts, retry logic, and local CSV outputs."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#methods",
+    "href": "projects/three-point-effect.html#methods",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Methods",
+    "text": "Methods\nThe analysis was completed in Python and included the following steps:\n\nCollected historical team-level NBA data using nba_api\nCleaned and standardized franchise names across team history\nCreated per-game three-point shooting features\nCompared three-point attempts, makes, and percentage against win percentage\nBuilt scatterplots with regression lines to visualize relationships\nIdentified notable outlier teams from different NBA eras\nUsed linear regression to evaluate how much three-point shooting metrics explain variation in winning"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#key-visualization-1-growth-of-three-point-shooting-over-time",
+    "href": "projects/three-point-effect.html#key-visualization-1-growth-of-three-point-shooting-over-time",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Key Visualization 1: Growth of Three-Point Shooting Over Time",
+    "text": "Key Visualization 1: Growth of Three-Point Shooting Over Time\n\n\n\n\n\nThis visualization shows how dramatically NBA three-point usage has increased over time. Three-point attempts per game and makes per game both rise sharply, especially in the modern NBA. League-wide three-point percentage improved earlier in the three-point era and then became more stable as the shot became a normal part of team offense.\nThe visualization also helps show how different NBA eras can produce very different winning profiles. The 1982 Los Angeles Lakers stand out as a high-winning team from an era when three-point usage was still extremely limited. In contrast, the 2015 Golden State Warriors represent a modern championship-level team built around elite three-point volume and efficiency."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#key-visualization-2-three-point-percentage-and-winning-percentage",
+    "href": "projects/three-point-effect.html#key-visualization-2-three-point-percentage-and-winning-percentage",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Key Visualization 2: Three-Point Percentage and Winning Percentage",
+    "text": "Key Visualization 2: Three-Point Percentage and Winning Percentage\n\n\n\n\n\nThis scatterplot shows the relationship between team three-point percentage and win percentage. The overall pattern suggests that teams shooting better from three-point range tend to win more games, but the relationship is not perfect.\nThe outliers are important because they show how the relationship between three-point shooting and success has changed over time. The 1982 Los Angeles Lakers were highly successful despite low three-point usage, while the 2015 Golden State Warriors represent a modern example of a team whose success was closely tied to high-volume, high-efficiency three-point shooting."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#main-findings",
+    "href": "projects/three-point-effect.html#main-findings",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Main Findings",
+    "text": "Main Findings\nThe project found a positive relationship between three-point shooting and team success, especially when looking at three-point percentage. Teams that shot more efficiently from three-point range generally had higher winning percentages.\nHowever, the analysis also showed that three-point shooting is only one part of team success. Some teams won at a high level without relying heavily on the three-point shot, especially in earlier eras. Modern teams, meanwhile, are more likely to use three-point shooting as a central part of their offensive identity.\nThe main takeaway is that three-point shooting is meaningfully related to winning, but the strength and interpretation of that relationship depends heavily on era, team style, and overall roster quality."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#skills-demonstrated",
+    "href": "projects/three-point-effect.html#skills-demonstrated",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Skills Demonstrated",
+    "text": "Skills Demonstrated\n\nPython data analysis\nAPI-based data collection\nData cleaning and standardization\nSports analytics\nExploratory data analysis\nFeature engineering\nData visualization\nCorrelation and regression analysis\nInterpretation of historical trends\nGitHub project documentation"
+  },
+  {
+    "objectID": "projects/three-point-effect.html#tools-used",
+    "href": "projects/three-point-effect.html#tools-used",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Tools Used",
+    "text": "Tools Used\nPython, pandas, matplotlib, seaborn, scikit-learn, nba_api, Jupyter Notebook, and GitHub."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#what-i-would-improve-next",
+    "href": "projects/three-point-effect.html#what-i-would-improve-next",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "What I Would Improve Next",
+    "text": "What I Would Improve Next\nFuture versions of this project could expand the analysis beyond simple three-point indicators by incorporating additional team context, such as offensive rating, defensive rating, pace, playoff performance, shot location data, or player-level roster construction.\nAnother useful extension would be to model the relationship by era instead of treating all seasons as part of one combined dataset. This would help separate the early three-point era from the modern spacing-focused NBA and provide a clearer view of how the value of three-point shooting has changed over time."
+  },
+  {
+    "objectID": "projects/three-point-effect.html#repository",
+    "href": "projects/three-point-effect.html#repository",
+    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
+    "section": "Repository",
+    "text": "Repository\nThe full repository includes the notebook, collected data outputs, cached NBA API files, and the complete README with additional technical details.\nView GitHub Repository"
+  },
+  {
     "objectID": "projects/pitch-forecaster.html",
     "href": "projects/pitch-forecaster.html",
     "title": "Pitch Forecaster: MLB Pitch Type Prediction",
@@ -117,278 +558,5 @@
     "title": "Pitch Forecaster: MLB Pitch Type Prediction",
     "section": "Repository",
     "text": "Repository\nThe GitHub repository contains the final model notebook, reports, and supporting project materials. It is not currently public, but once it is will be added as a link on this page."
-  },
-  {
-    "objectID": "projects/three-point-effect.html",
-    "href": "projects/three-point-effect.html",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "",
-    "text": "This project explores how NBA three-point shooting relates to team success across historical seasons. The analysis focuses on whether teams that attempt more threes, make more threes, or shoot a higher three-point percentage tend to win more games.\nRather than only looking at modern basketball, the project uses year-over-year team-level data to compare teams across different NBA eras. This makes it possible to see both the long-term growth of the three-point shot and the changing relationship between perimeter shooting and winning.\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects/three-point-effect.html#project-summary",
-    "href": "projects/three-point-effect.html#project-summary",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "",
-    "text": "This project explores how NBA three-point shooting relates to team success across historical seasons. The analysis focuses on whether teams that attempt more threes, make more threes, or shoot a higher three-point percentage tend to win more games.\nRather than only looking at modern basketball, the project uses year-over-year team-level data to compare teams across different NBA eras. This makes it possible to see both the long-term growth of the three-point shot and the changing relationship between perimeter shooting and winning.\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects/three-point-effect.html#research-question",
-    "href": "projects/three-point-effect.html#research-question",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Research Question",
-    "text": "Research Question\nHow strongly are NBA teams’ three-point shooting statistics related to winning percentage?\nMore specifically, this project evaluates three core shooting indicators:\n\nThree-point attempts per game\nThree-point makes per game\nThree-point percentage\n\nThe goal was not just to determine whether three-point shooting matters, but to understand which three-point metrics are most closely associated with team success."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#data-and-collection-process",
-    "href": "projects/three-point-effect.html#data-and-collection-process",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Data and Collection Process",
-    "text": "Data and Collection Process\nThe dataset was collected using the nba_api Python package, specifically the TeamYearByYearStats endpoint. The data includes historical team-level statistics such as wins, losses, win percentage, three-point makes, three-point attempts, and three-point percentage.\nA major data preparation step involved standardizing historical franchise names. Because NBA teams have relocated or changed names over time, older team names such as the Charlotte Bobcats, New Orleans Hornets, Seattle SuperSonics, and New Jersey Nets had to be mapped to consistent franchise names.\nThe data collection process also accounted for NBA Stats API reliability issues by using request headers, longer timeouts, retry logic, and local CSV outputs."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#methods",
-    "href": "projects/three-point-effect.html#methods",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Methods",
-    "text": "Methods\nThe analysis was completed in Python and included the following steps:\n\nCollected historical team-level NBA data using nba_api\nCleaned and standardized franchise names across team history\nCreated per-game three-point shooting features\nCompared three-point attempts, makes, and percentage against win percentage\nBuilt scatterplots with regression lines to visualize relationships\nIdentified notable outlier teams from different NBA eras\nUsed linear regression to evaluate how much three-point shooting metrics explain variation in winning"
-  },
-  {
-    "objectID": "projects/three-point-effect.html#key-visualization-1-growth-of-three-point-shooting-over-time",
-    "href": "projects/three-point-effect.html#key-visualization-1-growth-of-three-point-shooting-over-time",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Key Visualization 1: Growth of Three-Point Shooting Over Time",
-    "text": "Key Visualization 1: Growth of Three-Point Shooting Over Time\n\n\n\n\n\nThis visualization shows how dramatically NBA three-point usage has increased over time. Three-point attempts per game and makes per game both rise sharply, especially in the modern NBA. League-wide three-point percentage improved earlier in the three-point era and then became more stable as the shot became a normal part of team offense.\nThe visualization also helps show how different NBA eras can produce very different winning profiles. The 1982 Los Angeles Lakers stand out as a high-winning team from an era when three-point usage was still extremely limited. In contrast, the 2015 Golden State Warriors represent a modern championship-level team built around elite three-point volume and efficiency."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#key-visualization-2-three-point-percentage-and-winning-percentage",
-    "href": "projects/three-point-effect.html#key-visualization-2-three-point-percentage-and-winning-percentage",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Key Visualization 2: Three-Point Percentage and Winning Percentage",
-    "text": "Key Visualization 2: Three-Point Percentage and Winning Percentage\n\n\n\n\n\nThis scatterplot shows the relationship between team three-point percentage and win percentage. The overall pattern suggests that teams shooting better from three-point range tend to win more games, but the relationship is not perfect.\nThe outliers are important because they show how the relationship between three-point shooting and success has changed over time. The 1982 Los Angeles Lakers were highly successful despite low three-point usage, while the 2015 Golden State Warriors represent a modern example of a team whose success was closely tied to high-volume, high-efficiency three-point shooting."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#main-findings",
-    "href": "projects/three-point-effect.html#main-findings",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Main Findings",
-    "text": "Main Findings\nThe project found a positive relationship between three-point shooting and team success, especially when looking at three-point percentage. Teams that shot more efficiently from three-point range generally had higher winning percentages.\nHowever, the analysis also showed that three-point shooting is only one part of team success. Some teams won at a high level without relying heavily on the three-point shot, especially in earlier eras. Modern teams, meanwhile, are more likely to use three-point shooting as a central part of their offensive identity.\nThe main takeaway is that three-point shooting is meaningfully related to winning, but the strength and interpretation of that relationship depends heavily on era, team style, and overall roster quality."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#skills-demonstrated",
-    "href": "projects/three-point-effect.html#skills-demonstrated",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Skills Demonstrated",
-    "text": "Skills Demonstrated\n\nPython data analysis\nAPI-based data collection\nData cleaning and standardization\nSports analytics\nExploratory data analysis\nFeature engineering\nData visualization\nCorrelation and regression analysis\nInterpretation of historical trends\nGitHub project documentation"
-  },
-  {
-    "objectID": "projects/three-point-effect.html#tools-used",
-    "href": "projects/three-point-effect.html#tools-used",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Tools Used",
-    "text": "Tools Used\nPython, pandas, matplotlib, seaborn, scikit-learn, nba_api, Jupyter Notebook, and GitHub."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#what-i-would-improve-next",
-    "href": "projects/three-point-effect.html#what-i-would-improve-next",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "What I Would Improve Next",
-    "text": "What I Would Improve Next\nFuture versions of this project could expand the analysis beyond simple three-point indicators by incorporating additional team context, such as offensive rating, defensive rating, pace, playoff performance, shot location data, or player-level roster construction.\nAnother useful extension would be to model the relationship by era instead of treating all seasons as part of one combined dataset. This would help separate the early three-point era from the modern spacing-focused NBA and provide a clearer view of how the value of three-point shooting has changed over time."
-  },
-  {
-    "objectID": "projects/three-point-effect.html#repository",
-    "href": "projects/three-point-effect.html#repository",
-    "title": "The Three-Point Effect: Analyzing the Relationship Between NBA Three-Point Shooting and Winning",
-    "section": "Repository",
-    "text": "Repository\nThe full repository includes the notebook, collected data outputs, cached NBA API files, and the complete README with additional technical details.\nView GitHub Repository"
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "Resume",
-    "section": "",
-    "text": "Download Resume PDF"
-  },
-  {
-    "objectID": "resume.html#contact",
-    "href": "resume.html#contact",
-    "title": "Resume",
-    "section": "Contact",
-    "text": "Contact\nEmail: danielfulk317@gmail.com Phone: (336)-972-7062"
-  },
-  {
-    "objectID": "resume.html#education",
-    "href": "resume.html#education",
-    "title": "Resume",
-    "section": "Education",
-    "text": "Education\n\nUniversity of North Carolina at Chapel Hill\nMaster of Applied Data Science (MADS)\nCompleted April 2026\nB.S. Economics, Minor in Data Science\nMay 2024\nGPA: 3.14\n\n\nHonors and Awards\n\nDean’s List"
-  },
-  {
-    "objectID": "resume.html#technical-skills",
-    "href": "resume.html#technical-skills",
-    "title": "Resume",
-    "section": "Technical Skills",
-    "text": "Technical Skills\nPython, SQL, pandas, scikit-learn, TensorFlow/Keras, Optuna, Plotly, Streamlit, GitHub, Jupyter, data cleaning, feature engineering, predictive modeling, machine learning, data visualization, sports analytics, and applied data science."
-  },
-  {
-    "objectID": "resume.html#selected-projects",
-    "href": "resume.html#selected-projects",
-    "title": "Resume",
-    "section": "Selected Projects",
-    "text": "Selected Projects\n\nNext-Pitch Prediction in Baseball\nAnalyst\nChapel Hill, NC\nMay 2025\n\nBuilt a machine learning pipeline to predict the next pitch type in MLB games using Statcast and Baseball Savant pitch-level data.\nLed a data engineering process that used streaming ingestion, lagged features, pitcher/batter-specific historical tendencies, and score-context variables to create a game-aware feature set.\nImplemented and compared logistic regression, random forest, and neural network models, tuning hyperparameters with Optuna and validating performance across MLB divisions for generalizability.\nDesigned an ensemble model that integrated neural network and tree-based predictors, improving class balance and achieving 46% accuracy.\nDelivered a research-backed sports analytics framework showing how pitch sequencing, game context, and player tendencies can be modeled to support predictive insight in baseball strategy.\n\n\n\nNBA Shot Chart Data Visualization Tool\nDeveloper\nChapel Hill, NC\nAugust 2025\n\nDeveloped an interactive 3D NBA shot analytics platform in Python using Plotly and Streamlit to visualize player shooting performance spatially and contextually.\nDesigned custom 3D half-court geometry and parabolic shot trajectories to visualize shot paths in real time based on each attempt’s position relative to the hoop.\nEngineered zone-based field goal percentage models comparing player efficiency to league averages using NBA Stats API data and dynamic binning algorithms.\nApplied spatial data processing and statistical aggregation to derive performance differentials across shot zones and shooting contexts.\nOptimized data pipelines and caching logic to support real-time analytical exploration without redundant API queries."
-  },
-  {
-    "objectID": "resume.html#work-experience-and-community-involvement",
-    "href": "resume.html#work-experience-and-community-involvement",
-    "title": "Resume",
-    "section": "Work Experience and Community Involvement",
-    "text": "Work Experience and Community Involvement\n\nJavara Research\nIntern with the Finance Team\nWinston-Salem, NC\n2023 - Current\n\nIdentified potential monthly incremental revenue from changes in how patients were screened for clinical trials based on screen-fail payment terms, with the highest month totaling up to $2,986,589.25.\nConducted patient-level data cleaning in the clinical trial management system to ensure accurate aggregate metrics for each study and precise record keeping.\nContributed to building new trials in the clinical trial management system to align with sponsor-approved protocols, helping ensure that trial data and related financial information were recorded and managed correctly.\n\n\n\nNorth Stokes High School Boys Basketball\nAssistant Varsity Basketball Coach\nDanbury, NC\nSeptember 2025 - Present\n\nTeach and simplify complex basketball concepts, translating advanced strategies into actionable skills that improve player execution and team performance.\nBridge the gap between coaching knowledge and player execution by building understanding, confidence, and consistency across varied skill levels.\nCollaborate on strategy to maximize team strengths and develop adaptable game plans that promote efficient, winning basketball."
-  },
-  {
-    "objectID": "resume.html#additional-information",
-    "href": "resume.html#additional-information",
-    "title": "Resume",
-    "section": "Additional Information",
-    "text": "Additional Information\n\nCryptocurrency Club\nBusiness Technology Club\nUNC COVID Testing Center Volunteer"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.\nMy role: Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.\nSkills shown: Python, Streamlit, Plotly, nba_api, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development\nView Project\nView Live App\nView GitHub Repository\n\n\n\nCollaborative machine learning project with Arvind Madan and Elliott Walker focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.\nProject work: Developed a machine learning pipeline that cleaned and transformed pitch-level data, engineered lagged sequence features, enriched observations with pitcher and batter arsenal tendencies, and evaluated multiple modeling approaches including multinomial logistic regression, random forest, neural network, and ensemble models. The final ensemble model balanced overall accuracy with stronger class-wise performance across imbalanced pitch types.\nSkills shown: Python, pandas, scikit-learn, TensorFlow/Keras, Optuna, sports analytics, feature engineering, multiclass classification, neural networks, ensemble modeling, model evaluation\nView Project\nGitHub repository link will be added once the repository is publicly available.\n\n\n\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nBuilt this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects.html#available-projects",
-    "href": "projects.html#available-projects",
-    "title": "Projects",
-    "section": "",
-    "text": "Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot attempts as 3D trajectories on a realistic half court. The app uses NBA shot chart data, Plotly 3D rendering, contextual filters, and a league-relative hot/cold zone heatmap to help users explore player shooting patterns across seasons, opponents, shot types, venues, and game periods.\nMy role: Created the first working prototype, implemented the initial Streamlit app, built the core 3D shot visualization pipeline, added hover text metadata, quarter filtering, hot/cold heatmap mode, the heatmap scaling slider, and designed the caching system for NBA API requests.\nSkills shown: Python, Streamlit, Plotly, nba_api, sports analytics, 3D visualization, data filtering, API caching, interactive dashboard development\nView Project\nView Live App\nView GitHub Repository\n\n\n\nCollaborative machine learning project with Arvind Madan and Elliott Walker focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.\nProject work: Developed a machine learning pipeline that cleaned and transformed pitch-level data, engineered lagged sequence features, enriched observations with pitcher and batter arsenal tendencies, and evaluated multiple modeling approaches including multinomial logistic regression, random forest, neural network, and ensemble models. The final ensemble model balanced overall accuracy with stronger class-wise performance across imbalanced pitch types.\nSkills shown: Python, pandas, scikit-learn, TensorFlow/Keras, Optuna, sports analytics, feature engineering, multiclass classification, neural networks, ensemble modeling, model evaluation\nView Project\nGitHub repository link will be added once the repository is publicly available.\n\n\n\nThis project analyzes historical NBA team-level data to examine the relationship between three-point shooting and team success. Using year-over-year team statistics, it evaluates how three-point percentage, makes, and attempts relate to win percentage across NBA seasons.\nSkills shown: Python, pandas, sports analytics, data cleaning, exploratory data analysis, visualization, statistical interpretation\nView Project\nView GitHub Repository\n\n\n\nBuilt this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.\nSkills shown: Quarto, GitHub Pages, Markdown, GitHub, technical communication, portfolio development\nView Website\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects.html#additional-projects-coming-soon",
-    "href": "projects.html#additional-projects-coming-soon",
-    "title": "Projects",
-    "section": "Additional Projects Coming Soon",
-    "text": "Additional Projects Coming Soon\nThe following projects will be added once their repositories or collaborator access are available:\n\nUNC Baseball Attendance Prediction\nNBA Wearable Sensor Data Governance Case Study"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Daniel Fulk",
-    "section": "",
-    "text": "I recently completed my Master’s in Applied Data Science (MADS) from UNC Chapel Hill. The program focused on the full data life cycle, including databases, data engineering, predictive modeling, applied machine learning, and deep learning. Throughout my assignments and projects, I primarily focused on sports analytics, using data science methods to analyze team performance, player trends, predictive outcomes, and decision-making in sports contexts."
-  },
-  {
-    "objectID": "index.html#portfolio-projects",
-    "href": "index.html#portfolio-projects",
-    "title": "Daniel Fulk",
-    "section": "Portfolio Projects",
-    "text": "Portfolio Projects\nMy portfolio includes data science and sports analytics projects involving predictive modeling, machine learning, data visualization, interactive applications, and data-driven case studies.\nView All Projects"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I am a recent Master’s in Applied Data Science graduate from UNC Chapel Hill with interests in sports analytics, predictive modeling, data visualization, and applied machine learning.\nMy path into data science was not completely linear. I originally entered college as a chemistry major with the goal of eventually becoming an orthodontist. After my freshman year, I realized that while I respected the field, it was not the area I felt genuinely motivated to build my future around.\nThat realization led me to change direction and pursue a Bachelor of Science in Economics. Economics felt like a much better fit because it gave me a way to think analytically about real-world behavior, decision-making, incentives, and measurable outcomes. As I moved further into the major, I became increasingly interested in using data to answer practical questions and communicate evidence-based insights.\nThrough that experience, I discovered UNC Chapel Hill’s data science minor, which gave me my first structured exposure to programming, statistical analysis, and applied data work. That minor ultimately became the bridge between my economics background and my decision to continue into UNC’s Master of Applied Data Science program.\nSince then, my project work has focused heavily on using data science methods to analyze sports performance, forecast outcomes, and communicate insights through reproducible analysis and interactive tools. I am especially interested in projects that combine technical modeling with clear decision-making value, whether through predictive analytics, dashboards, or data-driven storytelling."
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
-    "section": "",
-    "text": "Email: danielfulk317@gmail.com\nLinkedIn: LinkedIn Profile\nGitHub: GitHub Profile"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html",
-    "href": "projects/courtspace-3d.html",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "",
-    "text": "CourtSpace 3D is an interactive Streamlit application for exploring NBA player shot patterns through a 3D half-court visualization. The app allows users to select a player, season range, and shot context, then view each shot as a 3D trajectory over a realistic NBA half court.\nThe project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the nba_api package.\nView Live App\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#project-summary",
-    "href": "projects/courtspace-3d.html#project-summary",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "",
-    "text": "CourtSpace 3D is an interactive Streamlit application for exploring NBA player shot patterns through a 3D half-court visualization. The app allows users to select a player, season range, and shot context, then view each shot as a 3D trajectory over a realistic NBA half court.\nThe project was built as a sports analytics and data visualization tool using Python, Streamlit, Plotly, pandas, NumPy, and the nba_api package.\nView Live App\nView GitHub Repository"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#project-motivation",
-    "href": "projects/courtspace-3d.html#project-motivation",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Project Motivation",
-    "text": "Project Motivation\nTraditional NBA shot charts are usually shown as flat 2D visuals. While useful, those charts can make it difficult to quickly understand shot trajectory, spatial patterns, and player efficiency in a more intuitive way.\nCourtSpace 3D was designed to make shot chart data more interactive and visually engaging. Instead of only showing where a shot was taken, the app renders each attempt as a 3D arc from the shot location to the basket. Users can then filter the visualization by player, season, shot type, opponent, venue, quarter, distance, and make/miss result."
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#my-role",
-    "href": "projects/courtspace-3d.html#my-role",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "My Role",
-    "text": "My Role\nThis was a collaborative project with Arvind Madan.\nMy primary contributions focused on building the foundation of the visualization tool:\n\nCreated the first working prototype using a static LeBron James shot dataset\nImplemented the initial Streamlit version of the app\nBuilt the core visualization pipeline for rendering player shot attempts as 3D trajectories\nAdded hover text metadata for shot-level context\nAdded quarter filtering\nBuilt the full hot/cold zone heatmap mode\nAdded the user-controlled heatmap scaling slider\nDesigned the caching system used to handle NBA API requests efficiently"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#partner-contributions",
-    "href": "projects/courtspace-3d.html#partner-contributions",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Partner Contributions",
-    "text": "Partner Contributions\nArvind Madan expanded the app with advanced filters and user interface improvements, including:\n\nMax-shots slider\nMakes/misses filter\nHome/away venue filter\nShot distance filter\nShot type filter\nOpponent filter\nAutomatically updating player and team images\nMulti-season query functionality\n\nTogether, these contributions produced an interactive app that combines NBA shot chart data, 3D rendering, contextual filtering, and league-relative efficiency analysis."
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#app-preview",
-    "href": "projects/courtspace-3d.html#app-preview",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "App Preview",
-    "text": "App Preview"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#key-features",
-    "href": "projects/courtspace-3d.html#key-features",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Key Features",
-    "text": "Key Features\n\nInteractive 3D Shot Arcs\nEach shot is rendered as a 3D trajectory from its court location to the rim. Makes and misses can be colored differently, allowing users to quickly identify successful and unsuccessful shot attempts.\n\n\nRealistic NBA Half-Court Geometry\nThe app builds a realistic half-court scene with a floor, paint, free throw line, restricted area, three-point line, rim, and backboard. The court geometry is defined in feet to match NBA-style dimensions.\n\n\nPlayer and Season Selection\nUsers can select an NBA player and choose either a single season or a multi-season range. The app supports both regular season and playoff data.\n\n\nContextual Shot Filters\nThe app allows users to filter shots by:\n\nMakes and misses\nHome or away games\nQuarter and overtime\nShot distance\nShot type\nOpponent\nMaximum number of shots displayed\n\n\n\nShot Profile Summary Metrics\nFor the selected view, the app reports summary metrics such as:\n\nTotal shots\nField goal percentage\nAverage shot distance\n\n\n\nHot/Cold Zone Heatmap\nThe hot/cold zone heatmap compares a player’s field goal percentage by court region against league average. This helps identify where a player shoots better or worse than the league from specific areas of the floor.\nThe heatmap is calculated as:\nPlayer FG% - League FG%\nPositive values indicate areas where the player shoots above league average, while negative values indicate areas where the player shoots below league average."
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#how-the-app-works",
-    "href": "projects/courtspace-3d.html#how-the-app-works",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "How the App Works",
-    "text": "How the App Works\nThe app uses nba_api to retrieve player shot chart data from NBA Stats. After the user selects a player and season range, the app loads player shot attempts and league-average zone data.\nThe visualization pipeline then:\n\nLoads player and league shot data\nAdds venue and opponent information\nApplies user-selected filters\nConverts NBA shot coordinates into court coordinates\nBuilds a 3D half-court using Plotly\nRenders shot attempts as 3D arcs\nOptionally overlays the league-relative hot/cold zone heatmap"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#technical-highlights",
-    "href": "projects/courtspace-3d.html#technical-highlights",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Technical Highlights",
-    "text": "Technical Highlights\n\nBuilt a modular Streamlit app with separate source files for data loading, filtering, court geometry, shot arcs, heatmap logic, zone classification, and 3D rendering\nUsed cached NBA API calls to reduce unnecessary requests and improve app performance\nConverted NBA shot chart coordinates into a custom 3D court coordinate system\nRendered shot attempts as quadratic Bezier arcs from shot location to the rim\nCompared player shooting efficiency to league-average zone performance\nAdded performance controls to limit the number of rendered shots for smoother interaction"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#tools-used",
-    "href": "projects/courtspace-3d.html#tools-used",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Tools Used",
-    "text": "Tools Used\nPython, Streamlit, Plotly, pandas, NumPy, nba_api, GitHub, and Streamlit Community Cloud."
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#skills-demonstrated",
-    "href": "projects/courtspace-3d.html#skills-demonstrated",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Skills Demonstrated",
-    "text": "Skills Demonstrated\n\nSports analytics\nInteractive dashboard development\nData visualization\nAPI-based data collection\nSpatial data processing\nFeature filtering and user interface design\n3D visualization with Plotly\nStreamlit app deployment\nCollaborative project development"
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#known-limitations",
-    "href": "projects/courtspace-3d.html#known-limitations",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Known Limitations",
-    "text": "Known Limitations\nThe app depends on NBA Stats data through nba_api, so load times and availability can depend on the NBA Stats endpoint. Older seasons may also contain less consistent shot-tracking data because of historical differences in NBA data collection.\nRendering thousands of 3D arcs can also be computationally heavy, so the app includes a maximum shot display slider and sampling logic to improve performance."
-  },
-  {
-    "objectID": "projects/courtspace-3d.html#repository",
-    "href": "projects/courtspace-3d.html#repository",
-    "title": "CourtSpace 3D: Interactive NBA Shot Visualization App",
-    "section": "Repository",
-    "text": "Repository\nThe full project repository contains the Streamlit app, helper modules, requirements file, and documentation.\nView Live App\nView GitHub Repository"
   }
 ]

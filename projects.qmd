@@ -25,6 +25,17 @@ Collaborative Streamlit app with Arvind Madan that visualizes NBA player shot at
 [View Live App](https://courtspace3d-v4.streamlit.app/)  
 [View GitHub Repository](https://github.com/mxngojuice/CourtSpace3D-v4/tree/main)
 
+### Pitch Forecaster: MLB Pitch Type Prediction
+
+Collaborative machine learning project with Arvind Madan and Elliott Walker focused on predicting the next MLB pitch type from pitch-level baseball data. The project used public Statcast/Baseball Savant data, game-context variables, pitch sequencing features, pitcher and batter tendencies, and multiclass classification models to explore how historical pitch patterns can be used to forecast future pitch selection.
+
+**Project work:** Developed a machine learning pipeline that cleaned and transformed pitch-level data, engineered lagged sequence features, enriched observations with pitcher and batter arsenal tendencies, and evaluated multiple modeling approaches including multinomial logistic regression, random forest, neural network, and ensemble models. The final ensemble model balanced overall accuracy with stronger class-wise performance across imbalanced pitch types.
+
+**Skills shown:** Python, pandas, scikit-learn, TensorFlow/Keras, Optuna, sports analytics, feature engineering, multiclass classification, neural networks, ensemble modeling, model evaluation
+
+[View Project](projects/pitch-forecaster.qmd)  
+GitHub repository link will be added once the repository is publicly available.
+
 ### Personal Portfolio Website
 
 Built this personal portfolio website using Quarto and GitHub Pages to showcase my data science projects, technical skills, academic background, and professional experiences. The site serves as a central location for my work in sports analytics, predictive modeling, data visualization, and applied data science.
@@ -39,6 +50,4 @@ Built this personal portfolio website using Quarto and GitHub Pages to showcase 
 The following projects will be added once their repositories or collaborator access are available:
 
 - UNC Baseball Attendance Prediction
-- CourtSpace 3D: Interactive NBA Shot Visualization App
-- Pitch Forecaster: MLB Pitch Type Prediction
 - NBA Wearable Sensor Data Governance Case Study

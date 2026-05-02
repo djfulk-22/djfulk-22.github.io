@@ -9,6 +9,7 @@ project:
     - contact.qmd
     - projects/three-point-effect.qmd
     - projects/courtspace-3d.qmd
+    - projects/pitch-forecaster.qmd
 
 website:
   title: "Daniel Fulk"
